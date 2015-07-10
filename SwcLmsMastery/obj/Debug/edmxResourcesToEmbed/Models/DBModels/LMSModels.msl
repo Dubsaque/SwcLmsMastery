@@ -153,5 +153,41 @@
       </EndProperty>
     </AssociationSetMapping>
     <FunctionImportMapping FunctionImportName="LmsUserInsert" FunctionName="SWC_LMSModel.Store.LmsUserInsert" />
+    <FunctionImportMapping FunctionImportName="GradeLevelSelectAll" FunctionName="SWC_LMSModel.Store.GradeLevelSelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GradeLevelSelectAll_Result">
+          <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+          <ScalarProperty Name="GradeLevelName" ColumnName="GradeLevelName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LmsUserSelectByAspNetId" FunctionName="SWC_LMSModel.Store.LmsUserSelectByAspNetId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.LmsUserSelectByAspNetId_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+          <ScalarProperty Name="SuggestedRole" ColumnName="SuggestedRole" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LmsUserSelectByUserId" FunctionName="SWC_LMSModel.Store.LmsUserSelectByUserId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.LmsUserSelectByUserId_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+          <ScalarProperty Name="SuggestedRole" ColumnName="SuggestedRole" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LmsUserSelectUnassigned" FunctionName="SWC_LMSModel.Store.LmsUserSelectUnassigned" />
+    <FunctionImportMapping FunctionImportName="GetGUID" FunctionName="SWC_LMSModel.Store.GetGUID" />
   </EntityContainerMapping>
 </Mapping>

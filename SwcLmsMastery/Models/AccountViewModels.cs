@@ -89,14 +89,12 @@ namespace SwcLmsMastery.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
-
+ 
         [Display(Name = "I am a...")]
         public string SuggestedRole { get; set; }
 
-
         [Display(Name = "Grade Level")]
-        public string GradeLevelId { get; set; }
+        public byte GradeLevelId { get; set; }
 
     }
 

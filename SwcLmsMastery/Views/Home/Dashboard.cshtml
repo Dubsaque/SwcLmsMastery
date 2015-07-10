@@ -1,4 +1,5 @@
-﻿@model SwcLmsMastery.Models.ApplicationUser
+﻿@using SwcLmsMastery.Models.DBModels
+@model SwcLmsMastery.Models.ApplicationUser
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,3 +10,35 @@
 <p>
     Dashboard
 </p>
+<p>
+    Role Information Here
+    @{
+        using (var context = new SWC_LMSEntities())
+        {
+            var roleList = context.AspNetRoles;
+            foreach (var role in roleList)
+            {
+                <p>Role Name: @role.Name<br/>
+                </p>
+                <p>Role ID: @role.Id<br/>
+                </p>
+            }
+        }
+    }
+</p>
+<p>
+    Existing AspNet Information Here
+    @{
+        using (var context = new SWC_LMSEntities())
+        {
+            var existingUserList = context.AspNetUsers;
+            foreach (var info in existingUserList)
+            {
+            <p>E-mail of registered users: @info.Email<br /></p>
+                <p>Should be the User's ID: @info.Id<br/>
+                </p>
+    <p>The suggested Role: @info.SuggestedRole<br /></p>
+            }
+        }
+}
+    </p>

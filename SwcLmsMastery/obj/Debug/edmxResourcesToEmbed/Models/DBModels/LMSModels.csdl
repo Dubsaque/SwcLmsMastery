@@ -352,5 +352,38 @@
       <Parameter Name="SuggestedRole" Mode="In" Type="String" />
       <Parameter Name="UserId" Mode="InOut" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="GradeLevelSelectAll" ReturnType="Collection(SWC_LMSModel.GradeLevelSelectAll_Result)" />
+    <FunctionImport Name="LmsUserSelectByAspNetId" ReturnType="Collection(SWC_LMSModel.LmsUserSelectByAspNetId_Result)">
+      <Parameter Name="Id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LmsUserSelectByUserId" ReturnType="Collection(SWC_LMSModel.LmsUserSelectByUserId_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LmsUserSelectUnassigned" ReturnType="Collection(String)" />
+    <FunctionImport Name="GetGUID" ReturnType="Collection(String)">
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="GradeLevelSelectAll_Result">
+    <Property Type="Byte" Name="GradeLevelId" Nullable="false" />
+    <Property Type="String" Name="GradeLevelName" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="LmsUserSelectByAspNetId_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="Id" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="Byte" Name="GradeLevelId" Nullable="true" />
+    <Property Type="String" Name="SuggestedRole" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="LmsUserSelectByUserId_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="Id" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="Byte" Name="GradeLevelId" Nullable="true" />
+    <Property Type="String" Name="SuggestedRole" Nullable="true" MaxLength="50" />
+  </ComplexType>
 </Schema>

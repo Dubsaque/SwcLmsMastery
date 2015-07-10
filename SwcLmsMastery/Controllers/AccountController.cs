@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SwcLmsMastery.Models;
+using SwcLmsMastery.Repositories;
 
 namespace SwcLmsMastery.Controllers
 {
@@ -163,7 +164,12 @@ namespace SwcLmsMastery.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    //cribbed this off Ryan and Nicks project for testing
+                    var guid = AdminRepo.GetId(model.Email);
+                    AdminRepo.InsertNewUserToDb(model, guid);
+                    //-------------------------------------------
+
+                    return RedirectToAction("Dashboard", "Home");
                 }
                 AddErrors(result);
             }

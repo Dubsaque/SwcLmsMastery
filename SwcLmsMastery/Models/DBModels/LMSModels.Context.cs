@@ -68,5 +68,42 @@ namespace SwcLmsMastery.Models.DBModels
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LmsUserInsert", idParameter, firstNameParameter, lastNameParameter, emailParameter, gradeLevelIdParameter, suggestedRoleParameter, userId);
         }
+    
+        public virtual ObjectResult<GradeLevelSelectAll_Result> GradeLevelSelectAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GradeLevelSelectAll_Result>("GradeLevelSelectAll");
+        }
+    
+        public virtual ObjectResult<LmsUserSelectByAspNetId_Result> LmsUserSelectByAspNetId(string id)
+        {
+            var idParameter = id != null ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LmsUserSelectByAspNetId_Result>("LmsUserSelectByAspNetId", idParameter);
+        }
+    
+        public virtual ObjectResult<LmsUserSelectByUserId_Result> LmsUserSelectByUserId(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LmsUserSelectByUserId_Result>("LmsUserSelectByUserId", userIdParameter);
+        }
+    
+        public virtual ObjectResult<string> LmsUserSelectUnassigned()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("LmsUserSelectUnassigned");
+        }
+    
+        public virtual ObjectResult<string> GetGUID(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetGUID", emailParameter);
+        }
     }
 }
