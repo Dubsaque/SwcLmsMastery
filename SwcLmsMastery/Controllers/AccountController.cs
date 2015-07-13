@@ -152,7 +152,7 @@ namespace SwcLmsMastery.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, SuggestedRole = model.SuggestedRole};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -167,6 +167,10 @@ namespace SwcLmsMastery.Controllers
                     //cribbed this off Ryan and Nicks project for testing
                     var guid = AdminRepo.GetId(model.Email);
                     AdminRepo.InsertNewUserToDb(model, guid);
+
+                    var test = UserManager.FindByEmail(model.Email);
+                    AdminRepo.GetRoles(test);
+
                     //-------------------------------------------
 
                     return RedirectToAction("Dashboard", "Home");

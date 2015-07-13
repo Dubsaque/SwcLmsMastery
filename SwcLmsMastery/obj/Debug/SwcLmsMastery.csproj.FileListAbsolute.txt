@@ -56,7 +56,6 @@ C:\SwcLmsMastery\SwcLmsMastery\bin\Microsoft.Owin.Security.OAuth.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\Microsoft.Owin.Security.Google.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\Microsoft.Owin.Security.Twitter.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.csprojResolveAssemblyReference.cache
 C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.dll
 C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.pdb
 C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.Migrations.Initial.resources

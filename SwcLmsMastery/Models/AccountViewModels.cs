@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace SwcLmsMastery.Models
 {
@@ -87,11 +88,25 @@ namespace SwcLmsMastery.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
  
         [Display(Name = "I am a...")]
         public string SuggestedRole { get; set; }
+
+        public static IEnumerable<SelectListItem> RolesList
+        {
+            get
+            {
+                return new List<SelectListItem>()
+                {
+                    new SelectListItem {Text = "Administrator", Value = "Administrator"},
+                    new SelectListItem {Text = "Student", Value = "Student"},
+                    new SelectListItem {Text = "Parent", Value = "Parent"},
+                    new SelectListItem {Text = "Teacher", Value = "Teacher"}
+                };
+            }
+        }
 
         [Display(Name = "Grade Level")]
         public byte GradeLevelId { get; set; }
@@ -113,7 +128,7 @@ namespace SwcLmsMastery.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

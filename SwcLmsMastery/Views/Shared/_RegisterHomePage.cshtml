@@ -1,16 +1,8 @@
 ﻿
+@using SwcLmsMastery.Models
+@using SwcLmsMastery.Models.DBModels
 @model SwcLmsMastery.Models.RegisterViewModel
 
-<script>
-    $(function () {
-        $("#USER").selectmenu();
-
-        $("#number")
-            .selectmenu()
-            .selectmenu("menuWidget")
-            .addClass("overflow");
-    });
-</script>
 <style>
     fieldset {
         border: 0;
@@ -68,54 +60,62 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.SuggestedRole, new {@class = "col-md-3 control-label"})
-        <div class="col-md-9">
-            @Html.TextBoxFor(m => m.SuggestedRole, new {@class = "form-control"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.GradeLevelId, new { @class = "col-md-3 control-label" })
-        <div class="col-md-9">
-            @Html.TextBoxFor(m => m.GradeLevelId, new { @class = "form-control" })
-        </div>
-    </div>
-
-
-
-
     @*<div class="form-group">
+        @ Html.LabelFor(m => m.SuggestedRole, new {@class = "col-md-3 control-label"})
+        <div class="col-md-9">
+            @ Html.TextBoxFor(m => m.SuggestedRole, new {@class = "form-control"})
+        </div>
+    </div>
+        *@
+    <div class="form-group">
         @Html.LabelFor(m => m.SuggestedRole, new { @class = "col-md-3 control-label" })
         <div class="col-md-9">
-            <select name="USER" id="USER">
-                <option value="Parent">Parent</option>
-                <option value="Teacher">Teacher</option>
-                <option selected="selected" value="Student">Student</option>
-            </select>
+            @Html.DropDownListFor(m => m.SuggestedRole, RegisterViewModel.RolesList)
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.GradeLevelId, new { @class = "col-md-3 control-label" })
-        <div class="col-md-9">
-            <select name="number" id="number">
-                <option selected="selected" value="k">K</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
+        <div class="form-group">
+            @Html.LabelFor(m => m.GradeLevelId, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                @Html.DropDownListFor(m => m.GradeLevelId, ViewBag.Grades as List<SelectListItem>)
+                
+            </div>
         </div>
-    </div>*@
+
+
+
+
+        @*<div class="form-group">
+            @Html.LabelFor(m => m.SuggestedRole, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                <select name="USER" id="USER">
+                    <option value="Parent">Parent</option>
+                    <option value="Teacher">Teacher</option>
+                    <option selected="selected" value="Student">Student</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.GradeLevelId, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                <select name="number" id="number">
+                    <option selected="selected" value="k">K</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+        </div>*@
 
 
 
@@ -131,6 +131,15 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
+
+    $(function () {
+        $("#USER").selectmenu();
+
+        $("#number")
+            .selectmenu()
+            .selectmenu("menuWidget")
+            .addClass("overflow");
+    });
 }
 
 

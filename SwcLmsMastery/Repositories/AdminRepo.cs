@@ -6,8 +6,10 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.Services.Description;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SwcLmsMastery.Models;
 using SwcLmsMastery.Models.DBModels;
@@ -45,7 +47,7 @@ namespace SwcLmsMastery.Repositories
         }
 
         public static List<IdentityUserRole> GetRoles(ApplicationUser user)
-        {
+        { 
             List<IdentityUserRole> roles = new List<IdentityUserRole>();
             foreach (var role in user.Roles)
             {
@@ -54,5 +56,24 @@ namespace SwcLmsMastery.Repositories
             return roles;
         }
 
+        public static List<SelectListItem> GetGradeLevels
+        {
+            get
+            {
+                List<SelectListItem> ret = new List<SelectListItem>();
+
+                using (var db = new SWC_LMSEntities())
+                {
+
+                    var gradelvl = db.GradeLevelSelectAll().ToList();
+                    foreach (var g in gradelvl)
+                    {
+                        ret.Add(new SelectListItem { Text = g.GradeLevelName, Value = g.GradeLevelId.ToString() } );
+                    }
+
+                    return ret;
+                }
+            }
+        }
     }
 }

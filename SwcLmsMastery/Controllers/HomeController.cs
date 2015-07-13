@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SwcLmsMastery.Repositories;
 
 namespace SwcLmsMastery.Controllers
 {
@@ -10,6 +11,8 @@ namespace SwcLmsMastery.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Grades = AdminRepo.GetGradeLevels;
+
             return View();
         }
 
