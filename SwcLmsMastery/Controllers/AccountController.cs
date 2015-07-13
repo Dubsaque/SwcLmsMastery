@@ -165,11 +165,11 @@ namespace SwcLmsMastery.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     //cribbed this off Ryan and Nicks project for testing
-                    var guid = AdminRepo.GetId(model.Email);
-                    AdminRepo.InsertNewUserToDb(model, guid);
+                    var guid = TheOneRepo.GetId(model.Email);
+                    TheOneRepo.InsertNewUserToDb(model, guid);
 
                     var test = UserManager.FindByEmail(model.Email);
-                    AdminRepo.GetRoles(test);
+                    TheOneRepo.GetRoles(test);
 
                     //-------------------------------------------
 

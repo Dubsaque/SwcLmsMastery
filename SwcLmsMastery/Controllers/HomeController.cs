@@ -11,7 +11,7 @@ namespace SwcLmsMastery.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Grades = AdminRepo.GetGradeLevels;
+            ViewBag.Grades = TheOneRepo.GetGradeLevels;
 
             return View();
         }
