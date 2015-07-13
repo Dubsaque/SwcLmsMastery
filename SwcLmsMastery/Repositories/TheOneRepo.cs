@@ -16,7 +16,7 @@ using SwcLmsMastery.Models.DBModels;
 
 namespace SwcLmsMastery.Repositories
 {
-    public class AdminRepo
+    public class TheOneRepo
     {
         public static List<LmsUserSelectUnassignedResult> LmsUserSelectUnassigned()
         {
