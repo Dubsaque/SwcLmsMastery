@@ -21,80 +21,80 @@
 
             </div>
 
-            
+
 
             <div class="navbar-collapse collapse">
-@{
-    if (User.IsInRole("Administrator"))
-    {
-        <ul class="nav navbar-nav">
-            <li><A href="#"><span class="glyphicon glyphicon-wrench" style="font-family: helvetica, arial; color: red;">Admin</span></A></li>
-           
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
-            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
-            <li><a href="#"><span class="glyphicon glyphicon-pencil" style="font-family: helvetica, arial; color: red;">Approve Users</span></a></li>
+                @{
+                    if (User.IsInRole("Administrator"))
+                    {
+                        <ul class="nav navbar-nav">
+                            <li><a href="#"><span class="glyphicon glyphicon-wrench" style="font-family: helvetica, arial; color: red;">Admin</span></a></li>
 
-        </ul>
-        @Html.Partial("_LoginPartial")
-    }
-    else if (User.IsInRole("Teacher"))
-    {
-        <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
-            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
-            <li><a href="#"><span class="glyphicon glyphicon-education" style="font-family: helvetica, arial; color: orangered;">Teacher</span></a></li>
-        </ul>
-        @Html.Partial("_LoginPartial")
-    }
-    else if (User.IsInRole("Student"))
-    {
-        <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
-            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
-            <li><a href="#"><span class="glyphicon glyphicon-apple" style="font-family: helvetica, arial; color: yellow;">Student</span></a></li>
-        </ul>
-        @Html.Partial("_LoginPartial")
-    }
-    else if (User.IsInRole("Parent"))
-    {
-        <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
-            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
-            <li><a href="#"><span class="glyphicon glyphicon-piggy-bank" style="font-family: helvetica, arial; color: yellowgreen;">Parent</span></a></li>
-        </ul>
-        @Html.Partial("_LoginPartial")
-    }
-    else
-    {
-        <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
-            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
-           
-        </ul>
-        @Html.Partial("_LoginPartial")
-    }
-}
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
+                            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
+                            <li><a href="#"><span class="glyphicon glyphicon-pencil" style="font-family: helvetica, arial; color: red;">Approve Users</span></a></li>
+
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                    }
+                    else if (User.IsInRole("Teacher"))
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
+                            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
+                            <li><a href="#"><span class="glyphicon glyphicon-education" style="font-family: helvetica, arial; color: orangered;">Teacher</span></a></li>
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                    }
+                    else if (User.IsInRole("Student"))
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
+                            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
+                            <li><a href="#"><span class="glyphicon glyphicon-apple" style="font-family: helvetica, arial; color: yellow;">Student</span></a></li>
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                    }
+                    else if (User.IsInRole("Parent"))
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
+                            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
+                            <li><a href="#"><span class="glyphicon glyphicon-piggy-bank" style="font-family: helvetica, arial; color: yellowgreen;">Parent</span></a></li>
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
+                            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
+
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                    }
+                }
             </div>
 
-                         
 
-</div>
-</div>
-<div class="container body-content">
-    @RenderBody()
-    <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - Our SWC LMS Application</p>
-    </footer>
-</div>
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Our SWC LMS Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
