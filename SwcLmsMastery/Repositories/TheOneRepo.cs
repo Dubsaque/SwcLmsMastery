@@ -46,6 +46,15 @@ namespace SwcLmsMastery.Repositories
             }
         }
 
+        //public static string GetUserDets(string email)
+        //{
+        //    using (var db = new SWC_LMSEntities())
+        //    {
+        //        var results = db.GetUserDets(email);
+        //        return results;
+        //    }
+        //}
+
         public static List<IdentityUserRole> GetRoles(ApplicationUser user)
         { 
             List<IdentityUserRole> roles = new List<IdentityUserRole>();

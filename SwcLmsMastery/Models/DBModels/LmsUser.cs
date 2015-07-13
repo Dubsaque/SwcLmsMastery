@@ -29,6 +29,7 @@ namespace SwcLmsMastery.Models.DBModels
         public string Email { get; set; }
         public string SuggestedRole { get; set; }
         public Nullable<byte> GradeLevelId { get; set; }
+        public Nullable<bool> IsApproved { get; set; }
     
         public virtual ICollection<Course> Courses { get; set; }
         public virtual GradeLevel GradeLevel { get; set; }

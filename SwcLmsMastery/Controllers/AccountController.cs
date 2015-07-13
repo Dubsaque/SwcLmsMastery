@@ -18,6 +18,7 @@ namespace SwcLmsMastery.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private TheOneRepo _theOneRepo;
 
         public AccountController()
         {

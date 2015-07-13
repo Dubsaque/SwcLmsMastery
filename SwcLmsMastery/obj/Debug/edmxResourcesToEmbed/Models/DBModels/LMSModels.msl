@@ -95,6 +95,7 @@
     <EntitySetMapping Name="LmsUsers">
       <EntityTypeMapping TypeName="SWC_LMSModel.LmsUser">
         <MappingFragment StoreEntitySet="LmsUser">
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -189,5 +190,34 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="LmsUserSelectUnassigned" FunctionName="SWC_LMSModel.Store.LmsUserSelectUnassigned" />
     <FunctionImportMapping FunctionImportName="GetGUID" FunctionName="SWC_LMSModel.Store.GetGUID" />
+    <FunctionImportMapping FunctionImportName="GetUserDetails" FunctionName="SWC_LMSModel.Store.GetUserDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GetUserDetails_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SuggestedRole" ColumnName="SuggestedRole" />
+          <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+          <ScalarProperty Name="Id1" ColumnName="Id1" />
+          <ScalarProperty Name="Email1" ColumnName="Email1" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="SuggestedRole1" ColumnName="SuggestedRole1" />
+          <ScalarProperty Name="UserId1" ColumnName="UserId1" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SetUserDetails" FunctionName="SWC_LMSModel.Store.SetUserDetails" />
   </EntityContainerMapping>
 </Mapping>

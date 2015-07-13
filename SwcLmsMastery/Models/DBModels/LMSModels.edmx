@@ -110,6 +110,7 @@
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="SuggestedRole" Type="varchar" MaxLength="50" />
           <Property Name="GradeLevelId" Type="tinyint" />
+          <Property Name="IsApproved" Type="bit" />
         </EntityType>
         <EntityType Name="Roster">
           <Key>
@@ -326,6 +327,9 @@
         <Function Name="GetGUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Email" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GradeLevelSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="LmsUserInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="nvarchar" Mode="In" />
@@ -343,6 +347,11 @@
           <Parameter Name="UserId" Type="int" Mode="In" />
         </Function>
         <Function Name="LmsUserSelectUnassigned" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SetUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="RoleId" Type="tinyint" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="InOut" />
+        </Function>
         <EntityContainer Name="SWC_LMSModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -534,6 +543,7 @@
           <NavigationProperty Name="Rosters" Relationship="Self.FK__Roster__UserId__1CF15040" FromRole="LmsUser" ToRole="Roster" />
           <NavigationProperty Name="LmsUser1" Relationship="Self.StudentGuardian" FromRole="LmsUser" ToRole="LmsUser1" />
           <NavigationProperty Name="LmsUsers" Relationship="Self.StudentGuardian" FromRole="LmsUser1" ToRole="LmsUser" />
+          <Property Name="IsApproved" Type="Boolean" />
         </EntityType>
         <EntityType Name="Roster">
           <Key>
@@ -782,6 +792,14 @@
           <FunctionImport Name="GetGUID" ReturnType="Collection(String)">
           <Parameter Name="Email" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetUserDetails" ReturnType="Collection(SWC_LMSModel.GetUserDetails_Result)">
+          <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SetUserDetails">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="RoleId" Mode="In" Type="Byte" />
+            <Parameter Name="UserId" Mode="InOut" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GradeLevelSelectAll_Result">
           <Property Type="Byte" Name="GradeLevelId" Nullable="false" />
@@ -804,6 +822,30 @@
           <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
           <Property Type="Byte" Name="GradeLevelId" Nullable="true" />
           <Property Type="String" Name="SuggestedRole" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetUserDetails_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Id" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SuggestedRole" Nullable="true" MaxLength="50" />
+          <Property Type="Byte" Name="GradeLevelId" Nullable="true" />
+          <Property Type="String" Name="Id1" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Email1" Nullable="true" MaxLength="256" />
+          <Property Type="Boolean" Name="EmailConfirmed" Nullable="true" />
+          <Property Type="String" Name="PasswordHash" Nullable="true" />
+          <Property Type="String" Name="SecurityStamp" Nullable="true" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" />
+          <Property Type="Boolean" Name="PhoneNumberConfirmed" Nullable="true" />
+          <Property Type="Boolean" Name="TwoFactorEnabled" Nullable="true" />
+          <Property Type="DateTime" Name="LockoutEndDateUtc" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="LockoutEnabled" Nullable="true" />
+          <Property Type="Int32" Name="AccessFailedCount" Nullable="true" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="SuggestedRole1" Nullable="true" />
+          <Property Type="String" Name="UserId1" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="RoleId" Nullable="true" MaxLength="128" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -905,6 +947,7 @@
           <EntitySetMapping Name="LmsUsers">
             <EntityTypeMapping TypeName="SWC_LMSModel.LmsUser">
               <MappingFragment StoreEntitySet="LmsUser">
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -999,6 +1042,35 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="LmsUserSelectUnassigned" FunctionName="SWC_LMSModel.Store.LmsUserSelectUnassigned" />
           <FunctionImportMapping FunctionImportName="GetGUID" FunctionName="SWC_LMSModel.Store.GetGUID" />
+          <FunctionImportMapping FunctionImportName="GetUserDetails" FunctionName="SWC_LMSModel.Store.GetUserDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.GetUserDetails_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SuggestedRole" ColumnName="SuggestedRole" />
+                <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+                <ScalarProperty Name="Id1" ColumnName="Id1" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SuggestedRole1" ColumnName="SuggestedRole1" />
+                <ScalarProperty Name="UserId1" ColumnName="UserId1" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SetUserDetails" FunctionName="SWC_LMSModel.Store.SetUserDetails" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

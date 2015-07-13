@@ -94,6 +94,7 @@ namespace SwcLmsMastery.Models
         [Display(Name = "I am a...")]
         public string SuggestedRole { get; set; }
 
+
         public static IEnumerable<SelectListItem> RolesList
         {
             get
