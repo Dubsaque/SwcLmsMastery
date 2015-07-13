@@ -66,7 +66,7 @@ namespace SwcLmsMastery.Models.DBModels
                 new ObjectParameter("SuggestedRole", suggestedRole) :
                 new ObjectParameter("SuggestedRole", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LmsUserInsert", idParameter, firstNameParameter, lastNameParameter, emailParameter, gradeLevelIdParameter, suggestedRoleParameter); // , userId);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LmsUserInsert", idParameter, firstNameParameter, lastNameParameter, emailParameter, gradeLevelIdParameter, suggestedRoleParameter, userId);
         }
     
         public virtual ObjectResult<GradeLevelSelectAll_Result> GradeLevelSelectAll()
