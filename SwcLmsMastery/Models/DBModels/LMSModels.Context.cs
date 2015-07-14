@@ -127,5 +127,32 @@ namespace SwcLmsMastery.Models.DBModels
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SetUserDetails", emailParameter, roleIdParameter, userId);
         }
+    
+        public virtual ObjectResult<GetParentDetails_Result> GetParentDetails(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetParentDetails_Result>("GetParentDetails", emailParameter);
+        }
+    
+        public virtual ObjectResult<GetStudentDetails_Result> GetStudentDetails(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentDetails_Result>("GetStudentDetails", emailParameter);
+        }
+    
+        public virtual ObjectResult<GetTeacherDetails_Result> GetTeacherDetails(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTeacherDetails_Result>("GetTeacherDetails", emailParameter);
+        }
     }
 }

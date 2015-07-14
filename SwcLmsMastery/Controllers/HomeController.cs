@@ -24,6 +24,15 @@ namespace SwcLmsMastery.Controllers
             return View();
         }
 
+        [Authorize]
+        public ActionResult Gradebook()
+        {
+            ViewBag.Message = "Your Gradebook page.";
+            ViewBag.HeaderSpec = "Code to pull course name - ";
+
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

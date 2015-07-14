@@ -327,6 +327,15 @@
         <Function Name="GetGUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Email" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetParentDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetStudentDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetTeacherDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Email" Type="varchar" Mode="In" />
         </Function>
@@ -800,6 +809,15 @@
             <Parameter Name="RoleId" Mode="In" Type="Byte" />
             <Parameter Name="UserId" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetParentDetails" ReturnType="Collection(SWC_LMSModel.GetParentDetails_Result)">
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudentDetails" ReturnType="Collection(SWC_LMSModel.GetStudentDetails_Result)">
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetTeacherDetails" ReturnType="Collection(SWC_LMSModel.GetTeacherDetails_Result)">
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GradeLevelSelectAll_Result">
           <Property Type="Byte" Name="GradeLevelId" Nullable="false" />
@@ -846,6 +864,21 @@
           <Property Type="String" Name="SuggestedRole1" Nullable="true" />
           <Property Type="String" Name="UserId1" Nullable="true" MaxLength="128" />
           <Property Type="String" Name="RoleId" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="GetParentDetails_Result">
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="GetStudentDetails_Result">
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="GetTeacherDetails_Result">
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1071,6 +1104,33 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SetUserDetails" FunctionName="SWC_LMSModel.Store.SetUserDetails" />
+          <FunctionImportMapping FunctionImportName="GetParentDetails" FunctionName="SWC_LMSModel.Store.GetParentDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.GetParentDetails_Result">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetStudentDetails" FunctionName="SWC_LMSModel.Store.GetStudentDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.GetStudentDetails_Result">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetTeacherDetails" FunctionName="SWC_LMSModel.Store.GetTeacherDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.GetTeacherDetails_Result">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

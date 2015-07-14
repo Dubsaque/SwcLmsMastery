@@ -94,6 +94,11 @@ namespace SwcLmsMastery.Models
         [Display(Name = "I am a...")]
         public string SuggestedRole { get; set; }
 
+        public RegisterViewModel()
+        {
+            IsApproved = false;
+        }
+        public bool IsApproved { get; set; }
 
         public static IEnumerable<SelectListItem> RolesList
         {
@@ -101,7 +106,7 @@ namespace SwcLmsMastery.Models
             {
                 return new List<SelectListItem>()
                 {
-                    new SelectListItem {Text = "Administrator", Value = "Administrator"},
+                    
                     new SelectListItem {Text = "Student", Value = "Student"},
                     new SelectListItem {Text = "Parent", Value = "Parent"},
                     new SelectListItem {Text = "Teacher", Value = "Teacher"}

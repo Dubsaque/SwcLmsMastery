@@ -29,6 +29,33 @@ CREATE PROCEDURE GetUserDetails @Email varchar(50) AS
 	WHERE LmsUser.Email = @Email
 GO
 
+CREATE PROCEDURE GetParentDetails @Email varchar(50) AS
+	SELECT LmsUser.Email, LmsUser.FirstName, LmsUser.LastName FROM LmsUser
+	LEFT JOIN AspNetUsers 
+	ON LmsUser.Id = AspNetUsers.Id
+	LEFT JOIN AspNetUserRoles
+	ON AspNetUsers.Id = AspNetUserRoles.UserId
+	WHERE AspNetUserRoles.RoleId = '4'
+GO
+
+CREATE PROCEDURE GetStudentDetails @Email varchar(50) AS
+	SELECT LmsUser.Email, LmsUser.FirstName, LmsUser.LastName FROM LmsUser
+	LEFT JOIN AspNetUsers 
+	ON LmsUser.Id = AspNetUsers.Id
+	LEFT JOIN AspNetUserRoles
+	ON AspNetUsers.Id = AspNetUserRoles.UserId
+	WHERE AspNetUserRoles.RoleId = '3'
+GO
+
+CREATE PROCEDURE GetTeacherDetails @Email varchar(50) AS
+	SELECT LmsUser.Email, LmsUser.FirstName, LmsUser.LastName FROM LmsUser
+	LEFT JOIN AspNetUsers 
+	ON LmsUser.Id = AspNetUsers.Id
+	LEFT JOIN AspNetUserRoles
+	ON AspNetUsers.Id = AspNetUserRoles.UserId
+	WHERE AspNetUserRoles.RoleId = '2'
+GO
+
 CREATE PROCEDURE SetUserDetails (
 	@Email varchar(50),
 	@RoleId tinyint,
