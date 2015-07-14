@@ -206,9 +206,6 @@
     <Compile Include="Models\DBModels\C__MigrationHistory.cs">
       <DependentUpon>LMSModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModels\GetUserDetails_Result.cs">
-      <DependentUpon>LMSModels.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DBModels\GradeLevel.cs">
       <DependentUpon>LMSModels.tt</DependentUpon>
     </Compile>
@@ -331,7 +328,7 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Shared\_LoginHomePage.cshtml" />
     <Content Include="Views\Shared\_RegisterHomePage.cshtml" />
-    <Content Include="Views\Manage\View.cshtml" />
+    <Content Include="Views\Manage\UserDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
