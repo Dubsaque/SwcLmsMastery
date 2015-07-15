@@ -40,7 +40,7 @@
 
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
-                            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
+                            
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
                                 <ul class="dropdown-menu" style="background: background: rgba(54,53,53,1);
@@ -64,9 +64,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', end
                             @{ using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                              {
                                 @Html.AntiForgeryToken()
-
                                 <ul class="nav navbar-nav navbar-right">
-
                                     <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
                                 </ul>
                              }
@@ -122,15 +120,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', end
                     }
                     else
                     {
-                        <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
-                            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
 
-                        </ul>
-                        @Html.Partial("_LoginPartial")
-                    }
-                }
+                            @Html.ActionLink("Software Craftsmanship Guild LMS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                    }   
+}
             </div>
 
 

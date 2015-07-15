@@ -16,7 +16,7 @@ namespace SwcLmsMastery.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize (Roles = "Administrator, Teacher, Student, Parent")]
         public ActionResult Dashboard()
         {
             ViewBag.Message = "Your dashboard page.";
@@ -24,10 +24,27 @@ namespace SwcLmsMastery.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize (Roles = "Teacher, Administrator")]
         public ActionResult Gradebook()
         {
-            ViewBag.Message = "Your Gradebook page.";
+            ViewBag.Message = "Your Gradebook page";
+            ViewBag.HeaderSpec = "Code to pull course name - ";
+
+            return View();
+        }
+
+        [Authorize(Roles = "Teacher, Administrator")]
+        public ActionResult MyClasses()
+        {
+            ViewBag.Message = "My Classes Page";     
+
+            return View();
+        }
+
+        [Authorize(Roles = "Teacher, Administrator")]
+        public ActionResult AddClass()
+        {
+            ViewBag.Message = "AddClass";
             ViewBag.HeaderSpec = "Code to pull course name - ";
 
             return View();
