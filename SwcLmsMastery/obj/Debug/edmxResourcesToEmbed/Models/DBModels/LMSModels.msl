@@ -219,5 +219,32 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SetUserDetails" FunctionName="SWC_LMSModel.Store.SetUserDetails" />
+    <FunctionImportMapping FunctionImportName="GetParentDetails" FunctionName="SWC_LMSModel.Store.GetParentDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GetParentDetails_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetStudentDetails" FunctionName="SWC_LMSModel.Store.GetStudentDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GetStudentDetails_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTeacherDetails" FunctionName="SWC_LMSModel.Store.GetTeacherDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GetTeacherDetails_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

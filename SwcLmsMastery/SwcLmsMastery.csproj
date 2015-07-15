@@ -206,6 +206,7 @@
     <Compile Include="Models\DBModels\C__MigrationHistory.cs">
       <DependentUpon>LMSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBModels\GetTeacherDetails_Result_2.cs" />
     <Compile Include="Models\DBModels\GradeLevel.cs">
       <DependentUpon>LMSModels.tt</DependentUpon>
     </Compile>
