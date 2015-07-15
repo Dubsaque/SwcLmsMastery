@@ -1,16 +1,14 @@
-﻿
+﻿@using System.Activities.Statements
+@using SwcLmsMastery.Models.DBModels
+@model SwcLmsMastery.Models.ApplicationUser
+
 @{
-    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>User Details</h2>
+@*@{
+    ViewBag.Title = "UserDetails";
+}*@
 
-<div class="well">
-    <div class="form-group">
-        @Html.LabelFor(m => m.Fname, new { @class = "col-md-2 control-label" })
-        <div class="col-md-9">
-            @Html.TextBoxFor(m => m.Fname, new {@class = "form-control"})
-        </div>
-     </div>
-</div>
+<h2>UserDetails</h2>
 

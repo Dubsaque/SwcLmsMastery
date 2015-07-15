@@ -42,7 +42,7 @@
                             <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
                             
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title ="Admin">Admin<span class="caret"></span></a>
                                 <ul class="dropdown-menu" style="background: background: rgba(54,53,53,1);
 background: -moz-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(54,53,53,1)), color-stop(24%, rgba(245,12,12,1)), color-stop(50%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
@@ -51,17 +51,17 @@ background: -o-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, 
 background: -ms-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
 background: linear-gradient(to bottom, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', endColorstr='#ffffff', GradientType=0 );">
-                                    <li><a href="#" style="color: white; font-weight: bold; font-style: oblique;">Admin Tools:</a></li>
+                                    <li><a href="#" style="color: white; font-weight: bold; font-style: oblique;" title ="Admin Tools">Admin Tools:</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li>@Html.ActionLink("Unassigned Users", "Dashboard", "Home")</li>
-                                    <li>@Html.ActionLink("User Search", "Dashboard", "Home")</li>
-                                    <li>@Html.ActionLink("Full Dashboard", "Dashboard", "Home")</li>
+                                    <li>@Html.ActionLink("Unassigned Users", "Dashboard", "Home", htmlAttributes: new { title = "Unassigned Users"})</li>
+                                    <li>@Html.ActionLink("User Search", "Dashboard", "Home", htmlAttributes: new { title = "User Search" })</li>
+                                    <li>@Html.ActionLink("Full Dashboard", "Dashboard", "Home", htmlAttributes: new { title = "Full Dashboard" })</li>
                                 </ul>
                             </li>
                         </ul>
                         //
                         <div>
-                            @{ using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            @{ using (Html.BeginForm("LogOff", "Account", FormMethod.Post, htmlAttributes: new { id = "logoutForm", title = "LogOff", @class = "navbar-right" }))
                              {
                                 @Html.AntiForgeryToken()
                                 <ul class="nav navbar-nav navbar-right">

@@ -12,30 +12,30 @@
         <div>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.Email, new { title = "Email", @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Email, new { title = "Email", @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.Password, new { title = "Password", @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.PasswordFor(m => m.Password, new { title = "Password", @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <div class="checkbox">
-                        @Html.CheckBoxFor(m => m.RememberMe)
-                        @Html.LabelFor(m => m.RememberMe)
+                        @Html.CheckBoxFor(m => m.RememberMe, new { title = "Remember Me"})
+                        @Html.LabelFor(m => m.RememberMe, new { title = "Remember Me"})
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Log in" class="btn btn-default" />
+                    <input type="submit" title ="Click to Submit" value="Log in" class="btn btn-default" />
                 </div>
             </div>
         </div>

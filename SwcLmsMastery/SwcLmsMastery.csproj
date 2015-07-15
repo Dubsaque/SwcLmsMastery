@@ -329,6 +329,9 @@
     <Content Include="Views\Shared\_LoginHomePage.cshtml" />
     <Content Include="Views\Shared\_RegisterHomePage.cshtml" />
     <Content Include="Views\Home\Gradebook.cshtml" />
+    <Content Include="Views\Manage\UserDetails.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
