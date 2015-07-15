@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
 
-    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,50 +29,50 @@
             <div class="navbar-collapse collapse">
                 @{
                     @Html.AntiForgeryToken()
-    if (User.IsInRole("Administrator"))
-    {
-        <ul class="nav navbar-nav">
-            <li><a href="#"><span class="glyphicon glyphicon-wrench" style="font-family: helvetica, arial; color: red;"></span></a></li>
-            <li>
-                @Html.ActionLink("Hello, Administrator!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage", @style = "color:red;"})
-            </li>
+                    if (User.IsInRole("Administrator"))
+                    {
+                        <ul class="nav navbar-nav">
+                            <li><a href="#"><span class="glyphicon glyphicon-wrench" style="font-family: helvetica, arial; color: red;"></span></a></li>
+                            <li>
+                                @Html.ActionLink("Hello, Administrator!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @style = "color:red;" })
+                            </li>
 
 
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
-            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
-                <ul class="dropdown-menu" style="background: background:rgba(54, 53, 53, 1);
-                                                                                                                                                      background: -moz-linear-gradient(top, rgba(54, 53, 53, 1) 0%, rgba(246, 39, 12, 1) 24%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%);
-                                                                                                                                                      background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(54, 53, 53, 1)), color-stop(24%, rgba(246, 39, 12, 1)), color-stop(50%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(255, 255, 255, 1)));
-                                                                                                                                                      background: -webkit-linear-gradient(top, rgba(54, 53, 53, 1) 0%, rgba(246, 39, 12, 1) 24%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%);
-                                                                                                                                                      background: -o-linear-gradient(top, rgba(54, 53, 53, 1) 0%, rgba(246, 39, 12, 1) 24%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%);
-                                                                                                                                                      background: -ms-linear-gradient(top, rgba(54, 53, 53, 1) 0%, rgba(246, 39, 12, 1) 24%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%);
-                                                                                                                                                      background: linear-gradient(to bottom, rgba(54, 53, 53, 1) 0%, rgba(246, 39, 12, 1) 24%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%);
-                                                                                                                                                      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#363535', endColorstr='#ffffff', GradientType=0);">
-                    <li><a href="#" style="color: white; font-weight: bold; font-style: oblique;">Admin Tools:</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li>@Html.ActionLink("Unassigned Users", "Dashboard", "Home")</li>
-                    <li>@Html.ActionLink("User Search", "Dashboard", "Home")</li>
-                    <li>@Html.ActionLink("Full Dashboard", "Dashboard", "Home")</li>
-                </ul>
-            </li>
-        </ul>
-//
-        <div>
-            @{ using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-            {
-            @Html.AntiForgeryToken()
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
+                            <li>@Html.ActionLink("Account", "Index", "Manage")</li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
+                                <ul class="dropdown-menu" style="background: background: rgba(54,53,53,1);
+background: -moz-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(54,53,53,1)), color-stop(24%, rgba(245,12,12,1)), color-stop(50%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
+background: -webkit-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+background: -o-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+background: -ms-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+background: linear-gradient(to bottom, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', endColorstr='#ffffff', GradientType=0 );">
+                                    <li><a href="#" style="color: white; font-weight: bold; font-style: oblique;">Admin Tools:</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>@Html.ActionLink("Unassigned Users", "Dashboard", "Home")</li>
+                                    <li>@Html.ActionLink("User Search", "Dashboard", "Home")</li>
+                                    <li>@Html.ActionLink("Full Dashboard", "Dashboard", "Home")</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        //
+                        <div>
+                            @{ using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                             {
+                                @Html.AntiForgeryToken()
 
-            <ul class="nav navbar-nav navbar-right">
-               
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-            </ul>
-            }
-            }
-        </div>
-//==
+                                <ul class="nav navbar-nav navbar-right">
+
+                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                                </ul>
+                             }
+                            }
+                        </div>
+                        //==
                     }
                     else if (User.IsInRole("Teacher"))
                     {
@@ -80,10 +80,8 @@
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
                             <li>@Html.ActionLink("Account", "Index", "Manage")</li>
-                            
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-family: helvetica, arial; color: orangered;">Teacher<span class="caret"></span></a>
-                                <ul class="dropdown-menu" style="background: background: rgba(54,53,53,1);
+
+                            <li class="dropdown" style="background: background: rgba(54,53,53,1);
 background: -moz-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,133,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(54,53,53,1)), color-stop(24%, rgba(245,133,12,1)), color-stop(50%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
 background: -webkit-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,133,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
@@ -91,6 +89,8 @@ background: -o-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,133,12,1) 24%,
 background: -ms-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,133,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
 background: linear-gradient(to bottom, rgba(54,53,53,1) 0%, rgba(245,133,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', endColorstr='#ffffff', GradientType=0 );">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-family: helvetica, arial; color: orangered;">Teacher<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
                                     <li><a href="#" style="color: white; font-weight: bold; font-style: oblique;">Teacher Tools:</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li>@Html.ActionLink("My Classes", "Dashboard", "Home")</li>
