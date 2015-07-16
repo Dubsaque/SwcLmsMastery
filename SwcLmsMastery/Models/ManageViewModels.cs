@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -82,5 +83,14 @@ namespace SwcLmsMastery.Models
     {
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+    }
+
+    public class LmsUserViewModel
+    {
+        public int UserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public byte? GradeLevelId { get; set; }
+        public List<string> Roles { get; set; }  // TODO : should really read these from DB...
     }
 }

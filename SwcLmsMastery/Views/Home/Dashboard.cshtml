@@ -31,8 +31,7 @@
                             <td>@i.FirstName</td>
                             <td><a href="mailto:@i.Email">@i.Email</a></td>
                             <td>@i.SuggestedRole</td>
-                            <td><a href="#deadlink">details</a></td>
-                           
+                            <td>@Html.ActionLink("Details", "UserDetails", "Manage", new {i.UserId}, null)</td>
 
                         </tr>
 

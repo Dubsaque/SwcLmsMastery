@@ -2,15 +2,19 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http.Routing;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SwcLmsMastery.Models;
+using SwcLmsMastery.Models.DBModels;
+using SwcLmsMastery.Repositories;
 
 namespace SwcLmsMastery.Controllers
 {
     [Authorize]
+    [RoutePrefix("Manage")]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -318,6 +322,63 @@ namespace SwcLmsMastery.Controllers
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
+        }
+        [HttpGet]
+        [Route("UserDetails/{UserId:int?}")]
+        public ActionResult UserDetails(int? UserId)
+        {
+            if (UserId.HasValue)
+            {
+                LmsUserViewModel user = null;
+                using (var context = new SWC_LMSEntities())
+                {
+                    var dbUser = context.LmsUsers.FirstOrDefault(x => x.UserId == UserId);
+                    user = new LmsUserViewModel
+                    {
+                        FirstName = dbUser.FirstName,
+                        LastName = dbUser.LastName,
+                        UserId = dbUser.UserId,
+                        GradeLevelId = dbUser.GradeLevelId
+                    };
+
+                }
+            
+                return View(user);
+            }
+
+            ViewBag.Message = "Invalid User Id.";
+            return View(new LmsUserViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveUserDetails(LmsUserViewModel user)
+        {
+            try
+            {
+                // grab user from DB
+                using (var context = new SWC_LMSEntities())
+                {
+                    var dbUser = context.LmsUsers.FirstOrDefault(x => x.UserId == user.UserId);
+                    // update user with incoming view model
+
+                    dbUser.FirstName = user.FirstName;
+                    dbUser.LastName = user.LastName;
+                    dbUser.GradeLevelId = user.GradeLevelId;
+                    // TODO ROLEs...
+                    // save user
+                    context.SaveChanges();
+
+                    ViewBag.Message = "Save successful";
+                }
+
+            }
+            catch (Exception e)
+            {
+                ViewBag.Message = "Error saving user.";
+                // throw;
+            }
+            return View("UserDetails", user);
         }
 
         protected override void Dispose(bool disposing)

@@ -81,7 +81,13 @@ namespace SwcLmsMastery.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                {
+                    // "~/home/dashboard"
+                    var torf = string.IsNullOrEmpty(returnUrl);
+                    if (torf == true)
+                        returnUrl = "~/home/dashboard";
                     return RedirectToLocal(returnUrl);
+                }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
