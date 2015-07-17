@@ -33,32 +33,32 @@
         <div class="form-group">
             @Html.LabelFor(m => m.Fname, new { title = "First Name", @class = "col-md-3 control-label" })
             <div class="col-md-9">
-                @Html.TextBoxFor(m => m.Fname, new { title = "First Name", @class = "form-control" })
+                @Html.TextBoxFor(m => m.Fname, new { placeholder = "First Name", title = "First Name", @class = "form-control" })
                 @*<input id="q" aria-hidden="true" autocomplete="off" name="q" tabindex="-1" type="url" jsaction="mousedown:ntp.fkbxclk" style="opacity: 0;">*@
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Lname, new { title = "Last Name", @class = "col-md-3 control-label" })
             <div class="col-md-9">
-                @Html.TextBoxFor(m => m.Lname, new { title = "Last Name", @class = "form-control" })
+                @Html.TextBoxFor(m => m.Lname, new { placeholder = "Last Name", title = "Last Name", @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Email, new { title = "Email", @class = "col-md-3 control-label" })
             <div class="col-md-9">
-                @Html.TextBoxFor(m => m.Email, new { title = "Email", @class = "form-control" })
+                @Html.TextBoxFor(m => m.Email, new { placeholder = "Email@Email.com", title = "Email", @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Password, new { title = "Password", @class = "col-md-3 control-label" })
             <div class="col-md-9">
-                @Html.PasswordFor(m => m.Password, new { title = "Password", @class = "form-control" })
+                @Html.PasswordFor(m => m.Password, new { placeholder = "Password", title = "Password", @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.ConfirmPassword, new { title = "Confirm Password", @class = "col-md-3 control-label" })
             <div class="col-md-9">
-                @Html.PasswordFor(m => m.ConfirmPassword, new { title = "Confirm Password", @class = "form-control" })
+                @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "Confirm Password", title = "Confirm Password", @class = "form-control" })
             </div>
         </div>
 

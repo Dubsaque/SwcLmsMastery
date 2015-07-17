@@ -60,3 +60,4 @@ C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.dll
 C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.pdb
 C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.Migrations.Initial.resources
 C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.csproj.GenerateResource.Cache
+C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.csprojResolveAssemblyReference.cache
