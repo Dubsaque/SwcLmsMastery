@@ -329,9 +329,13 @@
     <Content Include="Views\Shared\_LoginHomePage.cshtml" />
     <Content Include="Views\Shared\_RegisterHomePage.cshtml" />
     <Content Include="Views\Home\Gradebook.cshtml" />
+<<<<<<< ec7814127a8bf5c78aa5e72f54295a309af18e29
     <Content Include="Views\Manage\UserDetails.cshtml">
       <SubType>Code</SubType>
     </Content>
+=======
+    <Content Include="Views\Home\_AddAssPartial.cshtml" />
+>>>>>>> ee217050664540e920d97d8073433067fdec859d
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
