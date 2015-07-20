@@ -10,6 +10,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -55,8 +58,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', end
                                     <li role="separator" class="divider"></li>
                                     <li>@Html.ActionLink("Unassigned Users", "Dashboard", "Home", htmlAttributes: new { title = "Unassigned Users"})</li>
                                     <li>@Html.ActionLink("User Search", "Dashboard", "Home", htmlAttributes: new { title = "User Search" })</li>
-                                    <li>@Html.ActionLink("Full Dashboard", "Dashboard", "Home", htmlAttributes: new { title = "Full Dashboard" })</li>
-                                </ul>
+                                    <li>@Html.ActionLink("Full Dashboard", "Dashboard", "Home", htmlAttributes: new {title = "Full Dashboard"})</li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#" style="color: black; font-weight: bold; font-style: oblique;" title="Teacher Tools">Teacher Tools:</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>@Html.ActionLink("Add A Class (temp)", "AddClass", "Home", htmlAttributes: new { title = "Add A Class" })</li>
+                                    <li>@Html.ActionLink("Add Assignment (temp)", "Class", "Home", htmlAttributes: new { title = "View Classes" })</li>
+                                    <li>@Html.ActionLink("View Gradebook (temp)", "Gradebook", "Home", htmlAttributes: new { title = "View Gradebook" })</li>
+                                       </ul>
                             </li>
                         </ul>
                         //
@@ -91,8 +100,10 @@ background: linear-gradient(to bottom, rgba(54,53,53,1) 0%, rgba(245,133,12,1) 2
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', endColorstr='#ffffff', GradientType=0 );">
                                     <li><a href="#" style="color: white; font-weight: bold; font-style: oblique;">Teacher Tools:</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li>@Html.ActionLink("My Classes", "Dashboard", "Home")</li>
-                                    <li>@Html.ActionLink("Add New Class", "Dashboard", "Home")</li>
+                                    <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
+                                    <li>@Html.ActionLink("Add A Class (temp)", "AddClass", "Home", htmlAttributes: new { title = "Add A Class" })</li>
+                                    <li>@Html.ActionLink("Add Assignment (temp)", "Class", "Home", htmlAttributes: new { title = "View Classes" })</li>
+                                    <li>@Html.ActionLink("View Gradebook (temp)", "Gradebook", "Home", htmlAttributes: new { title = "View Gradebook" })</li>
                                 </ul>
                             </li>
                         </ul>
@@ -138,9 +149,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', end
             <p>&copy; @DateTime.Now.Year - Our SWC LMS Application</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

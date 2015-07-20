@@ -329,13 +329,20 @@
     <Content Include="Views\Shared\_LoginHomePage.cshtml" />
     <Content Include="Views\Shared\_RegisterHomePage.cshtml" />
     <Content Include="Views\Home\Gradebook.cshtml" />
-<<<<<<< ec7814127a8bf5c78aa5e72f54295a309af18e29
     <Content Include="Views\Manage\UserDetails.cshtml">
       <SubType>Code</SubType>
     </Content>
-=======
-    <Content Include="Views\Home\_AddAssPartial.cshtml" />
->>>>>>> ee217050664540e920d97d8073433067fdec859d
+    <Content Include="Views\Shared\_UserDetailsPartial.cshtml" />
+    <Content Include="Views\Shared\_AddAssignmentPartial.cshtml" />
+    <Content Include="Views\Shared\_AddClassPartial.cshtml" />
+    <Content Include="Views\Shared\_AddStudent.cshtml" />
+    <Content Include="Views\Home\Class.cshtml" />
+    <Content Include="Views\Shared\_TeacherDash.cshtml" />
+    <Content Include="Views\Shared\_AdminDash.cshtml" />
+    <Content Include="Views\Shared\_StudentDash.cshtml" />
+    <Content Include="Views\Shared\_ParentDash.cshtml" />
+    <Content Include="Views\Shared\_AwaitingAuth.cshtml" />
+    <Content Include="Views\Home\AddClass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

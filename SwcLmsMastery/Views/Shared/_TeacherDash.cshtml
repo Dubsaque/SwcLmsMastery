@@ -1,0 +1,57 @@
+﻿@using System.Activities.Expressions
+@using SwcLmsMastery.Models.DBModels
+
+<h3>Teacher Dashboard</h3>
+<hr />
+<div class="row container">
+    <div class="col-md-6">
+        <h4>My Classes</h4>
+
+        <div class="container table-bordered" style="border-color: black; border-style: solid; border-radius: 5px;">
+            <br/>
+
+
+            <table width="100%">
+                <thead>
+                <tr>
+                    <td>
+
+                        <div align="left">
+                            <a href="@Url.Action("AddClass", "Home")">
+                                <button>Add Class</button>
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                    <div align="right">Current () - Archived()</div></tr>
+                </thead>
+                <tbody>
+                <tr><td colspan="2" style="background-color: black;"></td></tr>
+                <tr>
+                    <td>
+                        <div align="left">@Html.ActionLink("Test Class", "Class", "Home")</div></td>
+                    <td>
+                        <div align="right">Fake Count</div></td>
+                </tr>
+                @{
+                    using (var classesList = new SWC_LMSEntities())
+                    {
+                        foreach (var i in classesList.Courses)
+                        {
+                            <tr>
+                                <td>&nbsp;@i.CourseName</td>
+                                <td>@i.Rosters.Count</td>
+
+                            </tr>
+
+                        }
+                    }
+
+                }
+
+                </tbody>
+            </table>
+            <br/>
+        </div>
+    </div>
+</div>

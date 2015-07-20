@@ -34,21 +34,24 @@ namespace SwcLmsMastery.Controllers
         }
 
         [Authorize(Roles = "Teacher, Administrator")]
-        public ActionResult MyClasses()
+        public ActionResult Class()
         {
-            ViewBag.Message = "My Classes Page";     
+            ViewBag.Message = "My Classes Page";
+            ViewBag.HeaderSpec = "Code to pull class name - ";
 
             return View();
         }
+
 
         [Authorize(Roles = "Teacher, Administrator")]
         public ActionResult AddClass()
         {
             ViewBag.Message = "AddClass";
-            ViewBag.HeaderSpec = "Code to pull course name - ";
+            ViewBag.HeaderSpec = "Code to pull class name - ";
 
             return View();
         }
+
 
         public ActionResult About()
         {
@@ -63,5 +66,7 @@ namespace SwcLmsMastery.Controllers
 
             return View();
         }
+
+
     }
 }
