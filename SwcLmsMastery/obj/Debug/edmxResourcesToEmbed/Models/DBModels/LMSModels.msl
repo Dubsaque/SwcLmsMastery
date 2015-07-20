@@ -246,5 +246,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InsertToAspNetUserRoles" FunctionName="SWC_LMSModel.Store.InsertToAspNetUserRoles" />
+    <FunctionImportMapping FunctionImportName="UnAssignedCount" FunctionName="SWC_LMSModel.Store.UnAssignedCount" />
   </EntityContainerMapping>
 </Mapping>

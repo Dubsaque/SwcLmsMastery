@@ -34,6 +34,17 @@ namespace SwcLmsMastery.Repositories
                 var output = new ObjectParameter("UserId", typeof(int));
                 db.LmsUserInsert(id, reg.Fname, reg.Lname, reg.Email,
                     reg.GradeLevelId, reg.SuggestedRole, output);
+
+            }
+        }
+
+        public static void InsertNewUserToAspNetUserRoles(LmsUserViewModel reg, string id)
+        {
+            using (var db = new SWC_LMSEntities())
+            {
+                var output = new ObjectParameter("UserId", typeof(int));
+                db.InsertToAspNetUserRoles(reg.UserId.ToString(), reg.Roles.ToString());
+
             }
         }
 

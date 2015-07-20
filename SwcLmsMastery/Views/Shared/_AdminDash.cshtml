@@ -1,89 +1,41 @@
 ﻿@using SwcLmsMastery.Models.DBModels
+@model IEnumerable<SwcLmsMastery.Models.DBModels.LmsUser>
 
-<h4>Unnassigned Users</h4>
-<div class="container">
-    <table class="table-striped" width="100%">
-        <thead style="background-color: #191970">
-            <tr>
-                <td><span style="color: white">&nbsp;Last Name</span></td>
-                <td><span style="color: white">First Name</span></td>
-                <td><span style="color: white">Email</span></td>
-                <td><span style="color: white">Suggested Role</span></td>
-                <td><span style="color: white"></span></td>
+<div align="center">
+    <h4>Administrator Dashboard</h4>
+    <hr/>
+    <p>
+        
+    </p>
+    <table>
+        <tr>
+            <td>
+               
 
-            </tr>
-        </thead>
-        <tbody>
-            @{
-                using (var context = new SWC_LMSEntities())
-                {
-                    foreach (var i in context.LmsUsers)
-                    {
-                        <tr>
-                            <td>&nbsp;@i.LastName</td>
-                            <td>@i.FirstName</td>
-                            <td><a href="mailto:@i.Email">@i.Email</a></td>
-                            <td>@i.SuggestedRole</td>
-                            <td>@Html.ActionLink("Details", "UserDetails", "Manage", new { i.UserId }, null)</td>
 
+                <a href="@Url.Action("UnassignedUsers", "Home")">
+                    <button class="btn btn-primary" type="button">
+                        Unassigned Users <span class="badge">
+@{ using (var context = new SWC_LMSEntities())
+   {
+
+            @context.UnAssignedCount().ToString().Length
+
+   }
+}
+                           </span></button>
+                        </a>
+                        </td>
+                        <td>
+
+                            <a href="@Url.Action("UserSearch", "Home")">
+                                <button class="btn btn-primary" type="button"> User Search <span class="badge"></span></button>
+                            </a>
+
+                        </td>
                         </tr>
+                    </table>
 
-                    }
-                }
 
-            }
-        </tbody>
-    </table>
+  
 </div>
-<hr /><hr />
-<h4>User Search</h4>
-<div class="container">
-    <div class="well">
-
-        @{
-            using (var context = new SWC_LMSEntities())
-            {
-
-
-                <div class="row todo-item">
-                    <input type="hidden" value="Id" name="Id" />
-                    <div class="col-md-2">
-                        <input type="text" id="idForLname" name="Lname" value="Last Name" />
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" id="idForFname" name="Fname" value="First Name" />
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" id="idForemail" name="Email" value="Email" />
-                    </div>
-
-
-                    <div class="col-md-1">
-                        <button class="btn btn-default" id="dets" style="background-color: greenyellow;">Search</button>
-                    </div>
-                </div>
-            }
-        }
-    </div>
-
-    <table class="table-striped" width="100%">
-        <thead style="background-color: #191970">
-            <tr>
-                <td><span style="color: white">&nbsp;Last Name</span></td>
-                <td><span style="color: white">First Name</span></td>
-                <td><span style="color: white">Email</span></td>
-                <td><span style="color: white"></span></td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>&nbsp;results</td>
-                <td>results</td>
-                <td>results</td>
-                <td><a href="#deadlink">details</a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-

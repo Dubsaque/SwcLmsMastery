@@ -365,6 +365,7 @@ namespace SwcLmsMastery.Controllers
                     dbUser.FirstName = user.FirstName;
                     dbUser.LastName = user.LastName;
                     dbUser.GradeLevelId = user.GradeLevelId;
+                    
                     // TODO ROLEs...
                     // save user
                     context.SaveChanges();

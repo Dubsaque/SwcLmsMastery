@@ -381,6 +381,11 @@
     <FunctionImport Name="GetTeacherDetails" ReturnType="Collection(SWC_LMSModel.GetTeacherDetails_Result)">
       <Parameter Name="Email" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="InsertToAspNetUserRoles">
+      <Parameter Name="UserId" Mode="In" Type="String" />
+      <Parameter Name="RoleId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UnAssignedCount" ReturnType="Collection(Int32)" />
   </EntityContainer>
   <ComplexType Name="GradeLevelSelectAll_Result">
     <Property Type="Byte" Name="GradeLevelId" Nullable="false" />

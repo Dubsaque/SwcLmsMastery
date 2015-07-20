@@ -106,14 +106,14 @@ namespace SwcLmsMastery.Models.DBModels
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetGUID", emailParameter);
         }
     
-        //public virtual ObjectResult<GetUserDetails_Result> GetUserDetails(string email)
-        //{
-        //    var emailParameter = email != null ?
-        //        new ObjectParameter("Email", email) :
-        //        new ObjectParameter("Email", typeof(string));
+        public virtual ObjectResult<GetUserDetails_Result> GetUserDetails(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
     
-        //    return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserDetails_Result>("GetUserDetails", emailParameter);
-        //}
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserDetails_Result>("GetUserDetails", emailParameter);
+        }
     
         public virtual int SetUserDetails(string email, Nullable<byte> roleId, ObjectParameter userId)
         {
@@ -128,31 +128,49 @@ namespace SwcLmsMastery.Models.DBModels
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SetUserDetails", emailParameter, roleIdParameter, userId);
         }
     
-        //public virtual ObjectResult<GetParentDetails_Result> GetParentDetails(string email)
-        //{
-        //    var emailParameter = email != null ?
-        //        new ObjectParameter("Email", email) :
-        //        new ObjectParameter("Email", typeof(string));
+        public virtual ObjectResult<GetParentDetails_Result> GetParentDetails(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
     
-        //    return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetParentDetails_Result>("GetParentDetails", emailParameter);
-        //}
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetParentDetails_Result>("GetParentDetails", emailParameter);
+        }
     
-        //public virtual ObjectResult<GetStudentDetails_Result> GetStudentDetails(string email)
-        //{
-        //    var emailParameter = email != null ?
-        //        new ObjectParameter("Email", email) :
-        //        new ObjectParameter("Email", typeof(string));
+        public virtual ObjectResult<GetStudentDetails_Result> GetStudentDetails(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
     
-        //    return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentDetails_Result>("GetStudentDetails", emailParameter);
-        //}
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentDetails_Result>("GetStudentDetails", emailParameter);
+        }
     
-        //public virtual ObjectResult<GetTeacherDetails_Result> GetTeacherDetails(string email)
-        //{
-        //    var emailParameter = email != null ?
-        //        new ObjectParameter("Email", email) :
-        //        new ObjectParameter("Email", typeof(string));
+        public virtual ObjectResult<GetTeacherDetails_Result> GetTeacherDetails(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
     
-        //    return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTeacherDetails_Result>("GetTeacherDetails", emailParameter);
-        //}
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTeacherDetails_Result>("GetTeacherDetails", emailParameter);
+        }
+    
+        public virtual int InsertToAspNetUserRoles(string userId, string roleId)
+        {
+            var userIdParameter = userId != null ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(string));
+    
+            var roleIdParameter = roleId != null ?
+                new ObjectParameter("RoleId", roleId) :
+                new ObjectParameter("RoleId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertToAspNetUserRoles", userIdParameter, roleIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> UnAssignedCount()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("UnAssignedCount");
+        }
     }
 }

@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using SwcLmsMastery.Models;
 using SwcLmsMastery.Repositories;
 
+
 namespace SwcLmsMastery.Controllers
 {
     [Authorize]
@@ -188,6 +189,7 @@ namespace SwcLmsMastery.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+   
 
         //
         // GET: /Account/ConfirmEmail

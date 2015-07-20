@@ -335,6 +335,10 @@
     <Parameter Name="Email" Type="varchar" Mode="In" />
   </Function>
   <Function Name="GradeLevelSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="InsertToAspNetUserRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="varchar" Mode="In" />
+    <Parameter Name="RoleId" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="LmsUserInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Id" Type="nvarchar" Mode="In" />
     <Parameter Name="FirstName" Type="varchar" Mode="In" />
@@ -356,6 +360,7 @@
     <Parameter Name="RoleId" Type="tinyint" Mode="In" />
     <Parameter Name="UserId" Type="int" Mode="InOut" />
   </Function>
+  <Function Name="UnAssignedCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="SWC_LMSModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />

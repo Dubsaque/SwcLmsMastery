@@ -68,3 +68,6 @@ CREATE PROCEDURE SetUserDetails (
 
 GO
 
+CREATE PROCEDURE UnAssignedCount AS
+SELECT COUNT(*) FROM LmsUser WHERE IsApproved IS NULL
+GO

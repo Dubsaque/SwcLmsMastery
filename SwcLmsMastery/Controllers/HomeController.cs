@@ -16,6 +16,7 @@ namespace SwcLmsMastery.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [Authorize (Roles = "Administrator, Teacher, Student, Parent")]
         public ActionResult Dashboard()
         {
@@ -48,6 +49,24 @@ namespace SwcLmsMastery.Controllers
         {
             ViewBag.Message = "AddClass";
             ViewBag.HeaderSpec = "Code to pull class name - ";
+
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult UserSearch()
+        {
+            ViewBag.Message = "User Search";
+            ViewBag.HeaderSpec = "Code to pull user info - ";
+
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult UnassignedUsers()
+        {
+            ViewBag.Message = "Unassigned Users";
+            ViewBag.HeaderSpec = "Code to pull user info - ";
 
             return View();
         }
