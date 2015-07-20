@@ -11,7 +11,7 @@
     ViewBag.Title = "UserDetails";
 }*@
 
-<h2>User Details</h2>
+<h3 style ="color: red">User Details</h3>
 @using (Html.BeginForm("SaveUserDetails", "Manage", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
 {
     @Html.AntiForgeryToken()
@@ -35,20 +35,20 @@
                     @Html.DropDownListFor(m => m.GradeLevelId, TheOneRepo.GetGradeLevels)
                 </div>
                 <div class="form-group">
-                    @Html.Label("Roles", new {title = "Roles", @class = "control-label"})
+                    &nbsp;@Html.Label("Roles", new { title = "Roles", @class = "control-label" })
                     <br/>
-                    @Html.CheckBox("Admin") @Html.Label("Administrator")
+                    &nbsp;&nbsp;@Html.CheckBox("Admin") @Html.Label("Administrator")
                     <br/>
-                    @Html.CheckBox("Student") @Html.Label("Student")
+                    &nbsp;&nbsp;@Html.CheckBox("Student") @Html.Label("Student")
                     <br/>
-                    @Html.CheckBox("Teacher") @Html.Label("Teacher")
+                    &nbsp;&nbsp;@Html.CheckBox("Teacher") @Html.Label("Teacher")
                     <br/>
-                    @Html.CheckBox("Parent") @Html.Label("Parent")
+                    &nbsp;&nbsp;@Html.CheckBox("Parent") @Html.Label("Parent")
                     <br/>
                     <br/>
                     <div>
-                        <input type="button" class="btn btn-default" value="Cancel" title="Click to Cancel" onclick="window.location = '/home/dashboard'"/>
-                        <input type="submit" class="btn btn-default" value="Save" title="Click to Save"/>
+                        &nbsp;&nbsp;<input type="button" class="btn btn-default" value="Cancel" title="Click to Cancel" onclick="window.location = '/home/dashboard'"/>
+                        &nbsp;&nbsp;<input type="submit" class="btn btn-default" value="Save" title="Click to Save"/>
                     </div>
                 </div>
             </div>
