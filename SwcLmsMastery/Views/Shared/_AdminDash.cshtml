@@ -19,9 +19,7 @@
                         Unassigned Users <span class="badge">
 @{ using (var context = new SWC_LMSEntities())
    {
-
-            @context.UnAssignedCount().ToString().Length
-
+ @context.LmsUsers.Where(x => x.IsApproved == null).Count()
    }
 }
                            </span></button>
