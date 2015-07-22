@@ -39,7 +39,8 @@
                             
 
                             <div class="container well modal-body" style="border-color: black; border-style: solid; border-radius: 5px; margin: 25px; overflow-y: scroll; max-height:85%;" name="_modBod">
-                                <h4 class="modal-title">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="font-size: 15px; color: black;">Close Window</span></button>
+                                 <h4 class="modal-title">
                                     Unnassigned Users <span class="badge">
                                         @{
                                             using (var context = new SWC_LMSEntities())
@@ -107,7 +108,7 @@
 
 
                             <div class="container well modal-body" style="border-color: black; border-style: solid; border-radius: 5px; margin: 25px; overflow-y: scroll; max-height:85%;" name="_modBod">
-
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="font-size: 15px;">Close Window</span></button>
                                 <script src="~/Scripts/jquery-2.1.4.min.js"></script>
                                 <script>
                                     $(function () {
