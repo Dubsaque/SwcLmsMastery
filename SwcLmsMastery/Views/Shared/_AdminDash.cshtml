@@ -3,7 +3,10 @@
 <script>
     $('#myModal').on('shown.bs.modal', function() {
         $('#myInput').focus();
-    })
+    });
+    $('#myModal2').on('shown.bs.modal', function() {
+        $('#myInput').focus();
+    });
 </script>
 
 <div align="center">
@@ -18,7 +21,7 @@
 
                 <!-- Large modal -->
                 <a href="@Url.Action("UnassignedUsers", "Home")">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg" id="myModal">
                         Unassigned Users <span class="badge">
                             @{
                                 using (var context = new SWC_LMSEntities())
@@ -31,19 +34,23 @@
                 </a>
                 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                     <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
+                        <div class="modal-content" style="width: 800px; margin-left: -125px;">
+                                
                             
-                            <div class="container well modal-header" style="border-color: black; border-style: solid; border-radius: 5px; margin: 25px;">
+
+                            <div class="container well modal-body" style="border-color: black; border-style: solid; border-radius: 5px; margin: 25px; overflow-y: scroll; max-height:85%;" name="_modBod">
                                 <h4 class="modal-title">
                                     Unnassigned Users <span class="badge">
-                                        @{ using (var context = new SWC_LMSEntities())
-                                         {
-                                            @context.LmsUsers.Where(x => x.IsApproved == null).Count();
-                                         }
+                                        @{
+                                            using (var context = new SWC_LMSEntities())
+                                            {
+                                                @context.LmsUsers.Where(x => x.IsApproved == null).Count()
+                                                ;
+                                            }
                                         }
                                     </span>
                                 </h4>
-                                 <table class="table-striped" width="100%">
+                                <table class="table-striped" width="100%">
                                     <thead style="background-color: #191970">
                                         <tr>
                                             <td><span style="color: white">&nbsp;Last Name</span></td>
@@ -66,7 +73,7 @@
                                                         <td>@i.FirstName</td>
                                                         <td><a href="mailto:@i.Email">@i.Email</a></td>
                                                         <td>@i.SuggestedRole</td>
-                                                        <td>@Html.ActionLink("Details", "UserDetails", "Manage", new { i.UserId }, null)</td>
+                                                        <td>@Html.ActionLink("Details", "UserDetails", "Manage", new { i.UserId, target = "_modBod" }, null)</td>
 
                                                     </tr>
 
@@ -79,6 +86,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
 
@@ -86,9 +94,90 @@
             </td>
             <td>
 
+                <!-- Large modal -->
                 <a href="@Url.Action("UserSearch", "Home")">
-                    <button class="btn btn-primary" type="button"> User Search <span class="badge"></span></button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg2" id="myModal2">
+                        User Search
+                    </button>
                 </a>
+                <div class="modal fade bs-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content" style="width: 800px; margin-left: -125px;">
+
+
+
+                            <div class="container well modal-body" style="border-color: black; border-style: solid; border-radius: 5px; margin: 25px; overflow-y: scroll; max-height:85%;" name="_modBod">
+
+                                <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+                                <script>
+                                    $(function () {
+                                        $('idForLname').click(function () {
+                                            var user = {
+                                                UserId: 0,
+                                                LastName: $('#idForLname').val(),
+
+                                            };
+
+                                            $.post();
+
+                                            $.ajax({
+                                                url: '@Url.Action("UserSearch")',
+                                                contentType: 'application/json',
+                                                dataType: 'json',
+                                                type: 'POST',
+                                                data: JSON.stringify(user),
+                                                success: function (data) {
+                                                    $('#theList').EMPTY();
+                                                    for (var i = 0; i < data.length; i++) {
+                                                        var usr = data[i];
+                                                        $('#theList').append('<li>' + usr.LastName + ' TEST' + '</li>');
+                                                    }
+
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+
+                                <h4 class="modal-title">User Search</h4>
+                                <div class="container well" style="border-color: black; border-style: solid; border-radius: 5px;">
+                                    <br />
+                                    <div class="well">
+
+                                        <div class="row todo-item">
+                                            <input type="hidden" value="Id" name="Id" />
+                                            <div class="col-md-2">
+                                                <input type="text" id="idForLname" name="Lname" value="Last Name" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="text" id="idForFname" name="Fname" value="First Name" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="text" id="idForemail" name="Email" value="Email" />
+                                            </div>
+
+
+                                            <div class="col-md-1">
+                                                <button class="btn btn-default" id="dets" style="background-color: greenyellow;">Search</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+                @*<a href="@Url.Action("UserSearch", "Home")">
+                    <button class="btn btn-primary" type="button"> User Search <span class="badge"></span></button>
+                </a>*@
 
             </td>
         </tr>

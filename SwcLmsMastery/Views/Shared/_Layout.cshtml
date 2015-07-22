@@ -7,13 +7,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - SWC LMS</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
 
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -142,130 +143,138 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', end
 
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-                        @{
-                if (User.IsInRole("Administrator"))
-                {
-                    <div class="row col-sm-12 container well-sm" style="background-color: black;" id="accordion">
-                        <h3><span style="color: red; font-weight: bold; font-family: helvetica, arial;" class="glyphicon glyphicon-wrench">&nbsp;&nbsp;Administrator Dashboard Tools:</span></h3>
-                        <div>
-                            <ul style="font-family: helvetica, arial;">
-                                <li>@Html.ActionLink("Unassigned Users", "UnassignedUsers", "Home", htmlAttributes: new { title = "Unassigned Users" })</li>
-                                <li>@Html.ActionLink("User Search", "UserSearch", "Home", htmlAttributes: new { title = "User Search" })</li>
-                                <li>@Html.ActionLink("Full Dashboard", "Dashboard", "Home", htmlAttributes: new { title = "Full Dashboard" })</li>
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+    <footer>
+        @{
+            if (User.IsInRole("Administrator"))
+            {
+                <div class="row col-sm-12 container well-sm" style="background-color: black;" id="accordion">
+                    <h3><span style="color: red; font-weight: bold; font-family: helvetica, arial;" class="glyphicon glyphicon-wrench">&nbsp;&nbsp;Administrator Dashboard Tools:</span></h3>
+                    <div>
+                        <ul style="font-family: helvetica, arial;">
+                            <li>@Html.ActionLink("Unassigned Users", "UnassignedUsers", "Home", htmlAttributes: new {title = "Unassigned Users"})</li>
+                            <li>@Html.ActionLink("User Search", "UserSearch", "Home", htmlAttributes: new {title = "User Search"})</li>
+                            <li>@Html.ActionLink("Full Dashboard", "Dashboard", "Home", htmlAttributes: new {title = "Full Dashboard"})</li>
 
-                                <li>@Html.ActionLink("Add A Class (temp)", "AddClass", "Home", htmlAttributes: new { title = "Add A Class" })</li>
-                                <li>@Html.ActionLink("Add Assignment (temp)", "Class", "Home", htmlAttributes: new { title = "View Classes" })</li>
-                                <li>@Html.ActionLink("View Gradebook (temp)", "Gradebook", "Home", htmlAttributes: new { title = "View Gradebook" })</li>
-                            </ul>
-                        </div>
+                            <li>@Html.ActionLink("Add A Class (temp)", "AddClass", "Home", htmlAttributes: new {title = "Add A Class"})</li>
+                            <li>@Html.ActionLink("Add Assignment (temp)", "Class", "Home", htmlAttributes: new {title = "View Classes"})</li>
+                            <li>@Html.ActionLink("View Gradebook (temp)", "Gradebook", "Home", htmlAttributes: new {title = "View Gradebook"})</li>
+                        </ul>
                     </div>
+                </div>
 //--
-                   
+
 //--
-                        <script>
-                            $(function () {
-                                $("#accordion").accordion({
-                                    collapsible: true,
-                                    active: false,
-                                    event: "click hoverintent"
-                                });
-                                $.event.special.hoverintent = {
-                                    setup: function () {
-                                        $(this).bind("mouseover", jQuery.event.special.hoverintent.handler);
-                                    },
-                                    teardown: function () {
-                                        $(this).unbind("mouseover", jQuery.event.special.hoverintent.handler);
-                                    },
-                                    handler: function (event) {
-                                        var currentX, currentY, timeout,
-                                          args = arguments,
-                                          target = $(event.target),
-                                          previousX = event.pageX,
-                                          previousY = event.pageY;
+                <script>
+                    $(function() {
+                        $("#accordion").accordion({
+                            collapsible: true,
+                            active: false,
+                            event: "click hoverintent"
+                        });
+                        $.event.special.hoverintent = {
+                            setup: function() {
+                                $(this).bind("mouseover", jQuery.event.special.hoverintent.handler);
+                            },
+                            teardown: function() {
+                                $(this).unbind("mouseover", jQuery.event.special.hoverintent.handler);
+                            },
+                            handler: function(event) {
+                                var currentX,
+                                    currentY,
+                                    timeout,
+                                    args = arguments,
+                                    target = $(event.target),
+                                    previousX = event.pageX,
+                                    previousY = event.pageY;
 
-                                        function track(event) {
-                                            currentX = event.pageX;
-                                            currentY = event.pageY;
-                                        };
+                                function track(event) {
+                                    currentX = event.pageX;
+                                    currentY = event.pageY;
+                                };
 
-                                        function clear() {
-                                            target
-                                              .unbind("mousemove", track)
-                                              .unbind("mouseout", clear);
-                                            clearTimeout(timeout);
-                                        }
+                                function clear() {
+                                    target
+                                        .unbind("mousemove", track)
+                                        .unbind("mouseout", clear);
+                                    clearTimeout(timeout);
+                                }
 
-                                        function handler() {
-                                            var prop,
-                                              orig = event;
+                                function handler() {
+                                    var prop,
+                                        orig = event;
 
-                                            if ((Math.abs(previousX - currentX) +
-                                                Math.abs(previousY - currentY)) < 7) {
-                                                clear();
+                                    if ((Math.abs(previousX - currentX) +
+                                        Math.abs(previousY - currentY)) < 7) {
+                                        clear();
 
-                                                event = $.Event("hoverintent");
-                                                for (prop in orig) {
-                                                    if (!(prop in event)) {
-                                                        event[prop] = orig[prop];
-                                                    }
-                                                }
-                                                // Prevent accessing the original event since the new event
-                                                // is fired asynchronously and the old event is no longer
-                                                // usable (#6028)
-                                                delete event.originalEvent;
-
-                                                target.trigger(event);
-                                            } else {
-                                                previousX = currentX;
-                                                previousY = currentY;
-                                                timeout = setTimeout(handler, 100);
+                                        event = $.Event("hoverintent");
+                                        for (prop in orig) {
+                                            if (!(prop in event)) {
+                                                event[prop] = orig[prop];
                                             }
                                         }
+                                        // Prevent accessing the original event since the new event
+                                        // is fired asynchronously and the old event is no longer
+                                        // usable (#6028)
+                                        delete event.originalEvent;
 
+                                        target.trigger(event);
+                                    } else {
+                                        previousX = currentX;
+                                        previousY = currentY;
                                         timeout = setTimeout(handler, 100);
-                                        target.bind({
-                                            mousemove: track,
-                                            mouseout: clear
-                                        });
                                     }
-                                };
-                            });
-                        </script>
-                        }
-                        else if (User.IsInRole("Teacher"))
-                        {
-                        <div class="row col-sm-12 container well-sm" style="background-color: black;">
-                            <div align="left" class="col-sm-6">
-                                <span style="color: orangered; font-weight: bold;">Teacher Dashboard Tools:</span>&nbsp;&nbsp;  @Html.ActionLink("List of Classes", "Class", "Home") || @Html.ActionLink("Add a new Class", "AddClass", "Home")
-                            </div>
-                            <div align="right" class="col-sm-6">
-                                <span style="color: whitesmoke"> &copy; @DateTime.Now.Year - JonatHelge Enterprises</span>
-                            </div>
-                        </div>
-                        }
-                        else if (User.IsInRole("Student"))
-                        {
-                        <p>&copy; @DateTime.Now.Year - JonatHelge Enterprises</p>
-                        }
-                        else if (User.IsInRole("Parent"))
-                        {
-                        <p>&copy; @DateTime.Now.Year - JonatHelge Enterprises</p>
-                        }
-                        else
-                        {
-                        <p>&copy; @DateTime.Now.Year - JonatHelge Enterprises</p>
-                        }
-                        }
+                                }
 
-</footer>
-    </div>
+                                timeout = setTimeout(handler, 100);
+                                target.bind({
+                                    mousemove: track,
+                                    mouseout: clear
+                                });
+                            }
+                        };
+                    });
+                </script>
+            }
+            else if (User.IsInRole("Teacher"))
+            {
+
+                <div class="row col-sm-12 container well-sm" id="accordion" style="background-color: black;">
+                    <div align="left" class="col-sm-6">
+                        <span style="color: orangered; font-weight: bold;">Teacher Dashboard Tools:</span>&nbsp;&nbsp; @Html.ActionLink("List of Classes", "Class", "Home") || @Html.ActionLink("Add a new Class", "AddClass", "Home")
+                    </div>
+                    <div align="right" class="col-sm-6">
+                        <span style="color: whitesmoke"> &copy; @DateTime.Now.Year - JonatHelge Enterprises</span>
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("Student"))
+            {
+                <p>&copy; @DateTime.Now.Year - JonatHelge Enterprises</p>
+            }
+            else if (User.IsInRole("Parent"))
+            {
+                <p>&copy; @DateTime.Now.Year - JonatHelge Enterprises</p>
+            }
+            else
+            {
+                <p>&copy; @DateTime.Now.Year - JonatHelge Enterprises</p>
+            }
+        }
+
+    </footer>
+</div>
+@section Scripts{
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+} 
+   @RenderSection("scripts", required: false)
 
 </body>
 </html>
