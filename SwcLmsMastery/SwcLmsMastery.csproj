@@ -260,8 +260,10 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CourseDbRepo.cs" />
     <Compile Include="Repositories\TheOneRepo.cs" />
     <Compile Include="Repositories\LmsUserSelectUnassigned_Result.cs" />
+    <Compile Include="Repositories\UserDbRepo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -271,6 +273,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\App\courseValidation.js" />
+    <Content Include="Scripts\App\jquery-validate-defaults.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\DBModels\LMSModels.edmx">
@@ -357,6 +361,9 @@
     <Content Include="Views\Home\AddClass.cshtml" />
     <Content Include="Views\Home\UserSearch.cshtml" />
     <Content Include="Views\Home\UnassignedUsers.cshtml" />
+    <Content Include="Views\Home\Success.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Shared\_DashLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
