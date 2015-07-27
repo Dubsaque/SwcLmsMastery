@@ -1,26 +1,15 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-using System.Web.Services.Description;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SwcLmsMastery.Models;
 using SwcLmsMastery.Models.DBModels;
-        
-        //This was an attempt to keep all the DB actions in a single repo for ease of use later.
-        //Obviously, that was not a wise choice as it becomes difficult to find elements in the Repo.
-        //Splitting into better Repos.
 
 namespace SwcLmsMastery.Repositories
 {
-    public class TheOneRepo
+    public class UserDbRepo
     {
         public static List<LmsUserSelectUnassignedResult> LmsUserSelectUnassigned()
         {
@@ -37,7 +26,7 @@ namespace SwcLmsMastery.Repositories
             {
                 var output = new ObjectParameter("UserId", typeof(int));
                 db.LmsUserInsert(id, reg.Fname, reg.Lname, reg.Email,
-                    reg.GradeLevelId, reg.SuggestedRole, output);              
+                    reg.GradeLevelId, reg.SuggestedRole, output);
 
             }
         }
@@ -61,17 +50,9 @@ namespace SwcLmsMastery.Repositories
             }
         }
 
-        //public static string GetUserDets(string email)
-        //{
-        //    using (var db = new SWC_LMSEntities())
-        //    {
-        //        var results = db.GetUserDets(email);
-        //        return results;
-        //    }
-        //}
 
         public static List<IdentityUserRole> GetRoles(ApplicationUser user)
-        { 
+        {
             List<IdentityUserRole> roles = new List<IdentityUserRole>();
             foreach (var role in user.Roles)
             {
@@ -100,23 +81,13 @@ namespace SwcLmsMastery.Repositories
             }
         }
 
-        public static List<SelectListItem> GetGradeLevels
+        public List<LmsUser> Search(string firstName, string lastName, string eMail)
         {
-            get
+            using (var context = new SWC_LMSEntities())
             {
-                List<SelectListItem> ret = new List<SelectListItem>();
-
-                using (var db = new SWC_LMSEntities())
-                {
-
-                    var gradelvl = db.GradeLevelSelectAll().ToList();
-                    foreach (var g in gradelvl)
-                    {
-                        ret.Add(new SelectListItem { Text = g.GradeLevelName, Value = g.GradeLevelId.ToString() } );
-                    }
-
-                    return ret;
-                }
+                context.LmsUsers.Where(x => x.FirstName.ToUpper().Contains(firstName.ToUpper()) ||
+                                            x.LastName.ToUpper().Contains(lastName.ToUpper()) ||
+                                            x.Email.ToUpper().Contains(eMail.ToUpper())).ToList();
             }
         }
 

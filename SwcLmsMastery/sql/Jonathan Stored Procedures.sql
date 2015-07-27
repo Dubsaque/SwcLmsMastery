@@ -71,3 +71,60 @@ GO
 CREATE PROCEDURE UnAssignedCount AS
 SELECT COUNT(*) FROM LmsUser WHERE IsApproved IS NULL
 GO
+
+CREATE PROCEDURE AddCourse (
+@CourseId int output,
+@CourseName varchar(30),
+@CourseDescription varchar(30),
+@StartDate DATETIME,
+@EndDate DATETIME,
+@GradeLevelId tinyint,
+@IsArchived bit
+) AS
+
+INSERT INTO Course (CourseId, CourseName, CourseDescription, StartDate, EndDate, GradeLevel, IsArchived)
+VALUES (@CourseId, @CourseName, @CourseDescription, @StartDate, @EndDate, @GradeLevelId, @IsArchived)
+
+SET @CourseId = SCOPE_IDENTITY();
+GO
+
+CREATE PROCEDURE GetGUID @Email varchar(50) AS
+
+SELECT Id
+FROM AspNetUsers
+WHERE Email = @Email
+
+GO
+
+CREATE PROCEDURE InsertUserToRole @Email varchar(50),  AS
+
+SELECT Id
+FROM AspNetUsers
+WHERE Email = @Email
+
+GO
+
+
+CREATE PROCEDURE InsertUserToAdminRole AS
+DECLARE @Email varchar(50)
+INSERT INTO AspNetUserRoles (UserId, RoleId)
+SELECT Id, '1' FROM AspNetUsers WHERE email = @Email 
+GO
+
+CREATE PROCEDURE InsertUserToTeacherRole AS
+DECLARE @Email varchar(50)
+INSERT INTO AspNetUserRoles (UserId, RoleId)
+SELECT Id, '2' FROM AspNetUsers WHERE email = @Email
+GO
+
+CREATE PROCEDURE InsertUserToStudentRole AS
+DECLARE @Email varchar(50)
+INSERT INTO AspNetUserRoles (UserId, RoleId)
+SELECT Id, '3' FROM AspNetUsers WHERE email = @Email
+GO
+
+CREATE PROCEDURE InsertUserToParentRole AS
+DECLARE @Email varchar(50)
+INSERT INTO AspNetUserRoles (UserId, RoleId)
+SELECT Id, '4' FROM AspNetUsers WHERE email = @Email
+GO

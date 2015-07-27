@@ -353,6 +353,10 @@
           <Parameter Name="UserId" Type="varchar" Mode="In" />
           <Parameter Name="RoleId" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="InsertUserToAdminRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="InsertUserToParentRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="InsertUserToStudentRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="InsertUserToTeacherRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="LmsUserInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="nvarchar" Mode="In" />
           <Parameter Name="FirstName" Type="varchar" Mode="In" />
@@ -846,6 +850,10 @@
             <Parameter Name="GradeLevelId" Mode="In" Type="Byte" />
             <Parameter Name="IsArchived" Mode="In" Type="Boolean" />
           </FunctionImport>
+          <FunctionImport Name="InsertUserToAdminRole" />
+          <FunctionImport Name="InsertUserToParentRole" />
+          <FunctionImport Name="InsertUserToStudentRole" />
+          <FunctionImport Name="InsertUserToTeacherRole" />
         </EntityContainer>
         <ComplexType Name="GradeLevelSelectAll_Result">
           <Property Type="Byte" Name="GradeLevelId" Nullable="false" />
@@ -1162,6 +1170,10 @@
           <FunctionImportMapping FunctionImportName="InsertToAspNetUserRoles" FunctionName="SWC_LMSModel.Store.InsertToAspNetUserRoles" />
           <FunctionImportMapping FunctionImportName="UnAssignedCount" FunctionName="SWC_LMSModel.Store.UnAssignedCount" />
           <FunctionImportMapping FunctionImportName="AddCourse" FunctionName="SWC_LMSModel.Store.AddCourse" />
+          <FunctionImportMapping FunctionImportName="InsertUserToAdminRole" FunctionName="SWC_LMSModel.Store.InsertUserToAdminRole" />
+          <FunctionImportMapping FunctionImportName="InsertUserToParentRole" FunctionName="SWC_LMSModel.Store.InsertUserToParentRole" />
+          <FunctionImportMapping FunctionImportName="InsertUserToStudentRole" FunctionName="SWC_LMSModel.Store.InsertUserToStudentRole" />
+          <FunctionImportMapping FunctionImportName="InsertUserToTeacherRole" FunctionName="SWC_LMSModel.Store.InsertUserToTeacherRole" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

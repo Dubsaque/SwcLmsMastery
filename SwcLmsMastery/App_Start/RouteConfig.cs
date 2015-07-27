@@ -21,6 +21,7 @@ namespace SwcLmsMastery
               defaults: new { controller = "Home", action = "Dashboard", id = UrlParameter.Optional }
               );
 
+
             routes.MapRoute(
                 name: "Account",
                 url: "{controller}/{action}/{id}",
@@ -32,6 +33,22 @@ namespace SwcLmsMastery
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
                 );
+
+            routes.MapRoute(
+                 name: "Admin",
+                 url: "{controller}/{action}/{id}",
+                 defaults: new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
+    );
+            routes.MapRoute(
+                 name: "Teacher",
+                 url: "{controller}/{action}/{id}",
+                 defaults: new { controller = "Teacher", action = "Index", id = UrlParameter.Optional }
+    );
+            routes.MapRoute(
+              name: "Courses",
+              url: "{controller}/{action}/{id}",
+              defaults: new { controller = "Courses", action = "Index", id = UrlParameter.Optional }
+ );
         }
     }
 }

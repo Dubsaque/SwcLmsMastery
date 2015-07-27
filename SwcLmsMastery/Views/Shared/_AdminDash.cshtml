@@ -13,7 +13,7 @@
     <h3>SWC LMS Administrator Dashboard</h3>
     <hr/>
     <p>
-        Welcome to the Software Craftsmanship Guild's Learning Management Systems.  From this dashboard console, you have access to the basic site administrator functions.  You also have access to the 'Teacher' role functions below.
+        Welcome to the Software Craftsmanship Guild's Learning Management Systems. From this dashboard console, you have access to the basic site administrator functions. You also have access to the 'Teacher' role functions below.
     </p>
     <table>
         <tr>
@@ -21,8 +21,8 @@
 
                 <!-- Large modal -->
                 <a href="@Url.Action("UnassignedUsers", "Home")"></a>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg" id="myModal">
-                        Unassigned Users <span class="badge">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg" id="myModal">
+                    Unassigned Users <span class="badge">
                             @{
                                 using (var context = new SWC_LMSEntities())
                                 {
@@ -30,17 +30,17 @@
                                 }
                             }
                         </span>
-                    </button>
-                
+                </button>
+
                 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content" style="width: 800px; margin-left: -125px;">
-                                
-                            
 
-                            <div class="container well modal-body" style="border-color: black; border-style: solid; border-radius: 5px; margin: 25px; overflow-y: scroll; max-height:85%;" name="_modBod">
+
+
+                            <div class="container well modal-body" style="border-color: black; border-style: solid; border-radius: 5px; margin: 25px; overflow-y: scroll; max-height: 85%;" name="_modBod">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="font-size: 15px; color: black;">Close Window</span></button>
-                                 <h4 class="modal-title">
+                                <h4 class="modal-title">
                                     Unnassigned Users <span class="badge">
                                         @{
                                             using (var context = new SWC_LMSEntities())
@@ -51,37 +51,37 @@
                                         }
                                     </span>
                                 </h4>
-                                <table class="table-striped" width ="100%">
+                                <table class="table-striped" width="100%">
                                     <thead style="background-color: #191970">
-                                        <tr>
-                                            <td><span style="color: white">&nbsp;Last Name</span></td>
-                                            <td><span style="color: white">First Name</span></td>
-                                            <td><span style="color: white">Email</span></td>
-                                            <td><span style="color: white">Suggested Role</span></td>
-                                            <td><span style="color: white">Details</span></td>
+                                    <tr>
+                                        <td><span style="color: white">&nbsp;Last Name</span></td>
+                                        <td><span style="color: white">First Name</span></td>
+                                        <td><span style="color: white">Email</span></td>
+                                        <td><span style="color: white">Suggested Role</span></td>
+                                        <td><span style="color: white">Details</span></td>
 
 
-                                        </tr>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        @{
-                                            using (var context = new SWC_LMSEntities())
+                                    @{
+                                        using (var context = new SWC_LMSEntities())
+                                        {
+                                            foreach (var i in context.LmsUsers.Where(x => x.IsApproved == false || x.IsApproved == null))
                                             {
-                                                foreach (var i in context.LmsUsers.Where(x => x.IsApproved == false || x.IsApproved == null))
-                                                {
-                                                    <tr>
-                                                        <td>&nbsp;@i.LastName</td>
-                                                        <td>@i.FirstName</td>
-                                                        <td><a href="mailto:@i.Email">@i.Email</a></td>
-                                                        <td>@i.SuggestedRole</td>
-                                                        <td>@Html.ActionLink("Details", "UserDetails", "Manage", new { i.UserId, target = "_modBod" }, null)</td>
+                                                <tr>
+                                                    <td>&nbsp;@i.LastName</td>
+                                                    <td>@i.FirstName</td>
+                                                    <td><a href="mailto:@i.Email">@i.Email</a></td>
+                                                    <td>@i.SuggestedRole</td>
+                                                    <td>@Html.ActionLink("Details", "UserDetails", "Manage", new {i.UserId, target = "_modBod"}, null)</td>
 
-                                                    </tr>
+                                                </tr>
 
-                                                }
                                             }
-
                                         }
+
+                                    }
                                     </tbody>
                                 </table>
                             </div>
@@ -91,28 +91,28 @@
                 </div>
 
 
-               
+
             </td>
             <td>
 
                 <!-- Large modal -->
                 <a href="@Url.Action("UserSearch", "Home")"></a>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg2" id="myModal2">
-                        User Search
-                    </button>
-                
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg2" id="myModal2">
+                    User Search
+                </button>
+
                 <div class="modal fade bs-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content" style="width: 800px; margin-left: -125px;">
 
 
 
-                            <div class="container well modal-body" style="border-color: black; border-style: solid; border-radius: 5px; margin: 25px; overflow-y: scroll; max-height:85%;" name="_modBod">
+                            <div class="container well modal-body" style="border-color: black; border-style: solid; border-radius: 5px; margin: 25px; overflow-y: scroll; max-height: 85%;" name="_modBod">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="font-size: 15px;">Close Window</span></button>
                                 <script src="~/Scripts/jquery-2.1.4.min.js"></script>
                                 <script>
-                                    $(function () {
-                                        $('idForLname').click(function () {
+                                    $(function() {
+                                        $('idForLname').click(function() {
                                             var user = {
                                                 UserId: 0,
                                                 LastName: $('#idForLname').val(),
@@ -127,7 +127,7 @@
                                                 dataType: 'json',
                                                 type: 'POST',
                                                 data: JSON.stringify(user),
-                                                success: function (data) {
+                                                success: function(data) {
                                                     $('#theList').EMPTY();
                                                     for (var i = 0; i < data.length; i++) {
                                                         var usr = data[i];
@@ -142,19 +142,19 @@
 
                                 <h4 class="modal-title">User Search</h4>
                                 <div class="container well" style="border-color: black; border-style: solid; border-radius: 5px;">
-                                    <br />
+                                    <br/>
                                     <div class="well">
 
                                         <div class="row todo-item">
-                                            <input type="hidden" value="Id" name="Id" />
+                                            <input type="hidden" value="Id" name="Id"/>
                                             <div class="col-md-2">
-                                                <input type="text" id="idForLname" name="Lname" value="Last Name" />
+                                                <input type="text" id="idForLname" name="Lname" value="Last Name"/>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="text" id="idForFname" name="Fname" value="First Name" />
+                                                <input type="text" id="idForFname" name="Fname" value="First Name"/>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="text" id="idForemail" name="Email" value="Email" />
+                                                <input type="text" id="idForemail" name="Email" value="Email"/>
                                             </div>
 
 
@@ -164,7 +164,7 @@
 
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
                                 </div>
                             </div>
                         </div>
@@ -185,6 +185,11 @@
     </table>
 
 </div>
+<hr/>
+<h4> HELGE! Use this!!!</h4>
+@Html.ActionLink("User Search From Class Today!", "UserSearch", "Home")
+<hr/>
+
 <hr/>
 <div align="center" class="container">
     <h3>SWC LMS Teacher Dashboard (Admin Access)</h3>

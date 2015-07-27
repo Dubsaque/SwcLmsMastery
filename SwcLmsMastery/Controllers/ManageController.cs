@@ -300,8 +300,7 @@ namespace SwcLmsMastery.Controllers
                 OtherLogins = otherLogins
             });
         }
-
-        //
+       //
         // POST: /Manage/LinkLogin
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -310,7 +309,6 @@ namespace SwcLmsMastery.Controllers
             // Request a redirect to the external login provider to link a login for the current user
             return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
         }
-
         //
         // GET: /Manage/LinkLoginCallback
         public async Task<ActionResult> LinkLoginCallback()
@@ -343,9 +341,7 @@ namespace SwcLmsMastery.Controllers
                         IsApproved = dbUser.IsApproved ?? false
                     };
                     ViewBag.UserRoles = TheOneRepo.GetAllRoles();
-
-                }
-            
+                }     
                 return View(user);
             }
 
@@ -370,7 +366,12 @@ namespace SwcLmsMastery.Controllers
                     dbUser.LastName = user.LastName;
                     dbUser.GradeLevelId = user.GradeLevelId;
                     dbUser.IsApproved = user.IsApproved;
+                    //the following was an attempt to activate the stored procedure 
+                    //to input this user's unique ID into the AspNetUserRoles table on DB.
+                    //var email = dbUser.Email;
+                    //context.InsertUserToAdminRole(email);
                     
+
                     // TODO ROLEs...
                     // save user
                     context.SaveChanges();
@@ -386,6 +387,8 @@ namespace SwcLmsMastery.Controllers
             }
             return View("UserDetails", user);
         }
+
+       
 
         protected override void Dispose(bool disposing)
         {

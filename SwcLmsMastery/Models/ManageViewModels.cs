@@ -94,5 +94,6 @@ namespace SwcLmsMastery.Models
         public byte? GradeLevelId { get; set; }
         public List<AspNetRole> Roles { get; set; }  
         public bool IsApproved { get; set; }
+        public string Email { get; set; }
     }
 }

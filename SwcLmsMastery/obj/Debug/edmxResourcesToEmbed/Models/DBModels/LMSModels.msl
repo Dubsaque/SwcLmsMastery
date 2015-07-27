@@ -249,5 +249,9 @@
     <FunctionImportMapping FunctionImportName="InsertToAspNetUserRoles" FunctionName="SWC_LMSModel.Store.InsertToAspNetUserRoles" />
     <FunctionImportMapping FunctionImportName="UnAssignedCount" FunctionName="SWC_LMSModel.Store.UnAssignedCount" />
     <FunctionImportMapping FunctionImportName="AddCourse" FunctionName="SWC_LMSModel.Store.AddCourse" />
+    <FunctionImportMapping FunctionImportName="InsertUserToAdminRole" FunctionName="SWC_LMSModel.Store.InsertUserToAdminRole" />
+    <FunctionImportMapping FunctionImportName="InsertUserToParentRole" FunctionName="SWC_LMSModel.Store.InsertUserToParentRole" />
+    <FunctionImportMapping FunctionImportName="InsertUserToStudentRole" FunctionName="SWC_LMSModel.Store.InsertUserToStudentRole" />
+    <FunctionImportMapping FunctionImportName="InsertUserToTeacherRole" FunctionName="SWC_LMSModel.Store.InsertUserToTeacherRole" />
   </EntityContainerMapping>
 </Mapping>

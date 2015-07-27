@@ -201,5 +201,30 @@ namespace SwcLmsMastery.Models.DBModels
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddCourse", courseId, courseNameParameter, courseDescriptionParameter, startDateParameter, endDateParameter, gradeLevelIdParameter, isArchivedParameter);
         }
+    
+        public virtual int InsertUserToAdminRole()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToAdminRole");
+        }
+
+        public virtual int InsertUserToAdminRole(string email)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToAdminRole");
+        }
+    
+        public virtual int InsertUserToParentRole()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToParentRole");
+        }
+    
+        public virtual int InsertUserToStudentRole()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToStudentRole");
+        }
+    
+        public virtual int InsertUserToTeacherRole()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToTeacherRole");
+        }
     }
 }

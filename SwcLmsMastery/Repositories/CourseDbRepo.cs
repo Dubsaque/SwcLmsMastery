@@ -24,19 +24,19 @@ namespace SwcLmsMastery.Repositories
             return courses.ToList();
         }
 
-        public static void AddCourse(CourseViewModel course)
-        {
-            SWC_LMSEntities context = new SWC_LMSEntities();
-            {
+  //      public static void AddCourse(CourseViewModel course)
+  //      {
+  //          SWC_LMSEntities context = new SWC_LMSEntities();
+  //          {
 
-            var startDate = DateTime.Parse(course.StartDate);
-            var endDate = DateTime.Parse(course.EndDate);
-            context.AddCourse(course.CourseId, course.SubjectId, course.CourseName, course.CourseDescription, course.IsArchived, startDate, endDate);
+  //          var startDate = DateTime.Parse(course.StartDate);
+  //          var endDate = DateTime.Parse(course.EndDate);
+  //          context.AddCourse(course.CourseId, course.SubjectId, course.CourseName, course.CourseDescription, course.IsArchived, startDate, endDate);
      
      
-  context.SaveChanges();
-            }
-        }
+  //context.SaveChanges();
+  //          }
+  //      }
 
         public static void EditCourse(CourseViewModel course)
         {
