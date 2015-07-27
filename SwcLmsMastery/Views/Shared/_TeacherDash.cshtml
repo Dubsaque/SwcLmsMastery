@@ -11,33 +11,30 @@
             <br/>
             <table width="100%">
                 <thead>
-                <tr>
-                    <td>
+                    <tr>
+                        <td>
 
-                        <div align="left">
-                            <a href="@Url.Action("AddClass", "Home")">
-                                <button>Add Class</button>
-                            </a>
-                        </div>
-                    </td>
-                    <td>
-                    <div align="right">Current () - Archived()</div></tr>
+                            <div align="left">
+                                <a href="@Url.Action("AddClass", "Home")">
+                                    <button>Add Class</button>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div align="right">
+                                Current ( ) - Archived()
+</div></tr>
                 </thead>
                 <tbody>
                 <tr><td colspan="2" style="background-color: black;"></td></tr>
-                <tr>
-                    <td>
-                        <div align="left">@Html.ActionLink("Test Class", "Class", "Home")</div></td>
-                    <td>
-                        <div align="right">Fake Count</div></td>
-                </tr>
+
                 @{
                     using (var classesList = new SWC_LMSEntities())
                     {
                         foreach (var i in classesList.Courses)
                         {
                             <tr>
-                                <td>&nbsp;@i.CourseName</td>
+                                <td>&nbsp;@Html.ActionLink(@i.CourseName, "Class", "Home")</td>
                                 <td>@i.Rosters.Count</td>
 
                             </tr>

@@ -324,6 +324,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AddCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseId" Type="int" Mode="InOut" />
+          <Parameter Name="CourseName" Type="varchar" Mode="In" />
+          <Parameter Name="CourseDescription" Type="varchar" Mode="In" />
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="GradeLevelId" Type="tinyint" Mode="In" />
+          <Parameter Name="IsArchived" Type="bit" Mode="In" />
+        </Function>
         <Function Name="GetGUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Email" Type="varchar" Mode="In" />
         </Function>
@@ -828,6 +837,15 @@
             <Parameter Name="RoleId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UnAssignedCount" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="AddCourse">
+            <Parameter Name="CourseId" Mode="InOut" Type="Int32" />
+            <Parameter Name="CourseName" Mode="In" Type="String" />
+            <Parameter Name="CourseDescription" Mode="In" Type="String" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="GradeLevelId" Mode="In" Type="Byte" />
+            <Parameter Name="IsArchived" Mode="In" Type="Boolean" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GradeLevelSelectAll_Result">
           <Property Type="Byte" Name="GradeLevelId" Nullable="false" />
@@ -1143,6 +1161,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="InsertToAspNetUserRoles" FunctionName="SWC_LMSModel.Store.InsertToAspNetUserRoles" />
           <FunctionImportMapping FunctionImportName="UnAssignedCount" FunctionName="SWC_LMSModel.Store.UnAssignedCount" />
+          <FunctionImportMapping FunctionImportName="AddCourse" FunctionName="SWC_LMSModel.Store.AddCourse" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

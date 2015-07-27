@@ -172,5 +172,34 @@ namespace SwcLmsMastery.Models.DBModels
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("UnAssignedCount");
         }
+    
+        public virtual int AddCourse(ObjectParameter courseId, string courseName, string courseDescription, Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate, Nullable<byte> gradeLevelId, Nullable<bool> isArchived)
+        {
+            var courseNameParameter = courseName != null ?
+                new ObjectParameter("CourseName", courseName) :
+                new ObjectParameter("CourseName", typeof(string));
+    
+            var courseDescriptionParameter = courseDescription != null ?
+                new ObjectParameter("CourseDescription", courseDescription) :
+                new ObjectParameter("CourseDescription", typeof(string));
+    
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            var gradeLevelIdParameter = gradeLevelId.HasValue ?
+                new ObjectParameter("GradeLevelId", gradeLevelId) :
+                new ObjectParameter("GradeLevelId", typeof(byte));
+    
+            var isArchivedParameter = isArchived.HasValue ?
+                new ObjectParameter("IsArchived", isArchived) :
+                new ObjectParameter("IsArchived", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddCourse", courseId, courseNameParameter, courseDescriptionParameter, startDateParameter, endDateParameter, gradeLevelIdParameter, isArchivedParameter);
+        }
     }
 }

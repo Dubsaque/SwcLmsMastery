@@ -185,6 +185,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CourseViewModel.cs" />
     <Compile Include="Models\DBModels\AspNetRole.cs">
       <DependentUpon>LMSModels.tt</DependentUpon>
     </Compile>
@@ -349,7 +350,7 @@
     </Content>
     <Content Include="Views\Shared\_UserDetailsPartial.cshtml" />
     <Content Include="Views\Shared\_AddAssignmentPartial.cshtml" />
-    <Content Include="Views\Shared\_AddClassPartial.cshtml" />
+    <Content Include="Views\Shared\_AddCoursePartial.cshtml" />
     <Content Include="Views\Shared\_AddStudent.cshtml" />
     <Content Include="Views\Home\Class.cshtml" />
     <Content Include="Views\Shared\_TeacherDash.cshtml" />
@@ -357,7 +358,7 @@
     <Content Include="Views\Shared\_StudentDash.cshtml" />
     <Content Include="Views\Shared\_ParentDash.cshtml" />
     <Content Include="Views\Shared\_AwaitingAuth.cshtml" />
-    <Content Include="Views\Home\AddClass.cshtml" />
+    <Content Include="Views\Home\AddCourse.cshtml" />
     <Content Include="Views\Home\UserSearch.cshtml" />
     <Content Include="Views\Home\UnassignedUsers.cshtml" />
     <Content Include="Views\Home\Success.cshtml" />

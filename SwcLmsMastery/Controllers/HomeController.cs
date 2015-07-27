@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SwcLmsMastery.Models;
+using SwcLmsMastery.Models.DBModels;
 using SwcLmsMastery.Repositories;
 
 namespace SwcLmsMastery.Controllers
@@ -45,10 +47,10 @@ namespace SwcLmsMastery.Controllers
 
 
         [Authorize(Roles = "Teacher, Administrator")]
-        public ActionResult AddClass()
+        public ActionResult AddCourse()
         {
-            ViewBag.Message = "AddClass";
-            ViewBag.HeaderSpec = "Code to pull class name - ";
+            ViewBag.Message = "AddCourse";
+            ViewBag.HeaderSpec = "Code to pull course name - ";
 
             return View();
         }
@@ -86,6 +88,37 @@ namespace SwcLmsMastery.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveCourse(Course course)
+        {
+            try
+            {
+                // grab course from DB
+                using (var context = new SWC_LMSEntities())
+                {
+       
+                    var dbCourse = context.Courses.FirstOrDefault(x => x.CourseId == course.CourseId);
+                    // update course with incoming view model
+
+                    dbCourse.CourseId = course.CourseId;
+                    dbCourse.CourseName = course.CourseName;
+                    dbCourse.CourseDescription = course.CourseDescription;
+
+   
+                    context.SaveChanges();
+
+                    ViewBag.Message = "Save successful";
+                }
+
+            }
+            catch (Exception e)
+            {
+                ViewBag.Message = "Error saving user.";
+                // throw;
+            }
+            return View("UserDetails", course);
+        }
 
     }
 }
