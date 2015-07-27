@@ -36,14 +36,17 @@
             </div>
             <div class="form-group">
                 &nbsp;@Html.Label("Roles", new {title = "Roles", @class = "control-label"})
+
+                
+
                 <br/>
-                &nbsp;&nbsp;@Html.CheckBox("Admin") @Html.Label("Administrator")
-                <br/>
-                &nbsp;&nbsp;@Html.CheckBox("Student") @Html.Label("Student")
-                <br/>
-                &nbsp;&nbsp;@Html.CheckBox("Teacher") @Html.Label("Teacher")
-                <br/>
-                &nbsp;&nbsp;@Html.CheckBox("Parent") @Html.Label("Parent")
+                @foreach (AspNetRole r in ViewBag.UserRoles)
+                {
+                    @Html.CheckBox(r.Id);
+                    @Html.Label(r.Name);
+                    <br/>
+                }
+
                 <br/>
                 <br/>
                 <div class="form-group">

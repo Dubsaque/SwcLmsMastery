@@ -325,6 +325,7 @@ namespace SwcLmsMastery.Controllers
         }
         [HttpGet]
         [Route("UserDetails/{UserId:int?}")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult UserDetails(int? UserId)
         {
             if (UserId.HasValue)
@@ -338,8 +339,10 @@ namespace SwcLmsMastery.Controllers
                         FirstName = dbUser.FirstName,
                         LastName = dbUser.LastName,
                         UserId = dbUser.UserId,
-                        GradeLevelId = dbUser.GradeLevelId
+                        GradeLevelId = dbUser.GradeLevelId,
+                        IsApproved = dbUser.IsApproved ?? false
                     };
+                    ViewBag.UserRoles = TheOneRepo.GetAllRoles();
 
                 }
             
@@ -352,6 +355,7 @@ namespace SwcLmsMastery.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult SaveUserDetails(LmsUserViewModel user)
         {
             try
@@ -365,6 +369,7 @@ namespace SwcLmsMastery.Controllers
                     dbUser.FirstName = user.FirstName;
                     dbUser.LastName = user.LastName;
                     dbUser.GradeLevelId = user.GradeLevelId;
+                    dbUser.IsApproved = user.IsApproved;
                     
                     // TODO ROLEs...
                     // save user

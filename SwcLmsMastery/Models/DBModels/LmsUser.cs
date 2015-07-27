@@ -18,6 +18,7 @@ namespace SwcLmsMastery.Models.DBModels
         {
             this.Courses = new HashSet<Course>();
             this.Rosters = new HashSet<Roster>();
+            this.Roles = new HashSet<AspNetRole>();
             this.LmsUser1 = new HashSet<LmsUser>();
             this.LmsUsers = new HashSet<LmsUser>();
         }
@@ -34,6 +35,7 @@ namespace SwcLmsMastery.Models.DBModels
         public virtual ICollection<Course> Courses { get; set; }
         public virtual GradeLevel GradeLevel { get; set; }
         public virtual ICollection<Roster> Rosters { get; set; }
+        public virtual ICollection<AspNetRole> Roles { get; set; }
         public virtual ICollection<LmsUser> LmsUser1 { get; set; }
         public virtual ICollection<LmsUser> LmsUsers { get; set; }
     }

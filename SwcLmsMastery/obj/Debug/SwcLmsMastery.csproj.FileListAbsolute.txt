@@ -32,6 +32,7 @@ C:\SwcLmsMastery\SwcLmsMastery\bin\System.Web.WebPages.Razor.dll
 C:\SwcLmsMastery\SwcLmsMastery\bin\WebGrease.dll
 C:\SwcLmsMastery\SwcLmsMastery\bin\EntityFramework.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\EntityFramework.SqlServer.xml
+C:\SwcLmsMastery\SwcLmsMastery\bin\Newtonsoft.Json.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\System.Web.Helpers.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\System.Web.Mvc.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\System.Web.Optimization.xml
@@ -40,7 +41,6 @@ C:\SwcLmsMastery\SwcLmsMastery\bin\System.Web.WebPages.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\System.Web.WebPages.Deployment.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\System.Web.WebPages.Razor.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\Antlr3.Runtime.pdb
-C:\SwcLmsMastery\SwcLmsMastery\bin\Newtonsoft.Json.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\System.Net.Http.Formatting.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\System.Web.Http.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\System.Web.Http.WebHost.xml
@@ -56,8 +56,8 @@ C:\SwcLmsMastery\SwcLmsMastery\bin\Microsoft.Owin.Security.OAuth.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\Microsoft.Owin.Security.Google.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\Microsoft.Owin.Security.Twitter.xml
 C:\SwcLmsMastery\SwcLmsMastery\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.dll
-C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.pdb
 C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.Migrations.Initial.resources
 C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.csproj.GenerateResource.Cache
+C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.dll
+C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.pdb
 C:\SwcLmsMastery\SwcLmsMastery\obj\Debug\SwcLmsMastery.csprojResolveAssemblyReference.cache

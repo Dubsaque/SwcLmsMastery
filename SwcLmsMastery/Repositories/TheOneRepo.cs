@@ -76,6 +76,26 @@ namespace SwcLmsMastery.Repositories
             return roles;
         }
 
+        public static LmsUser GetUserWithRoles(int id)
+        {
+            using (var db = new SWC_LMSEntities())
+            {
+                var dbUser = db.LmsUsers.FirstOrDefault(x => x.UserId == id);
+                // dbUser.Roles = 
+            }
+
+            return null;
+        }
+
+        public static List<AspNetRole> GetAllRoles()
+        {
+            using (var db = new SWC_LMSEntities())
+            {
+                var roles = db.AspNetRoles; // from r in db.AspNetRoles select r;  // db.AspNetRoles.ToList();
+                return roles.OrderBy(r => r.Name).ToList();
+            }
+        }
+
         public static List<SelectListItem> GetGradeLevels
         {
             get

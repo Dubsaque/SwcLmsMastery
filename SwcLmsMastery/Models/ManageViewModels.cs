@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using SwcLmsMastery.Models.DBModels;
 
 namespace SwcLmsMastery.Models
 {
@@ -91,6 +92,7 @@ namespace SwcLmsMastery.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public byte? GradeLevelId { get; set; }
-        public List<string> Roles { get; set; }  // TODO : should really read these from DB...
+        public List<AspNetRole> Roles { get; set; }  
+        public bool IsApproved { get; set; }
     }
 }

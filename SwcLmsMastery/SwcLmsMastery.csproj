@@ -263,7 +263,6 @@
     <Compile Include="Repositories\CourseDbRepo.cs" />
     <Compile Include="Repositories\TheOneRepo.cs" />
     <Compile Include="Repositories\LmsUserSelectUnassigned_Result.cs" />
-    <Compile Include="Repositories\UserDbRepo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

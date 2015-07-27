@@ -148,6 +148,8 @@ namespace SwcLmsMastery.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Grades = TheOneRepo.GetGradeLevels;
+
             return View();
         }
 
