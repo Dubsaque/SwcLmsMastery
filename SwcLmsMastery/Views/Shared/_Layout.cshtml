@@ -7,7 +7,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - SWC LMS</title>
-
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -15,6 +16,9 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+   
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -45,29 +49,29 @@
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
                             
-                            @*<li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title ="Admin">Admin<span class="caret"></span></a>
-                                <ul class="dropdown-menu" style="background: #363535; background: rgba(54,53,53,1);
-background: -moz-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(54,53,53,1)), color-stop(24%, rgba(245,12,12,1)), color-stop(50%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
-background: -webkit-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-background: -o-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-background: -ms-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-background: linear-gradient(to bottom, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', endColorstr='#ffffff', GradientType=0 );">
-                                    <li><a href="#" style="color: white; font-weight: bold; font-style: oblique;" title ="Admin Tools">Admin Tools:</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li>@Html.ActionLink("Unassigned Users", "UnassignedUsers", "Home", htmlAttributes: new { title = "Unassigned Users" })</li>
-                                    <li>@Html.ActionLink("User Search", "UserSearch", "Home", htmlAttributes: new { title = "User Search" })</li>
-                                    <li>@Html.ActionLink("Full Dashboard", "Dashboard", "Home", htmlAttributes: new {title = "Full Dashboard"})</li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#" style="color: black; font-weight: bold; font-style: oblique;" title="Teacher Tools">Teacher Tools:</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li>@Html.ActionLink("Add A Class (temp)", "AddClass", "Home", htmlAttributes: new { title = "Add A Class" })</li>
-                                    <li>@Html.ActionLink("Add Assignment (temp)", "Class", "Home", htmlAttributes: new { title = "View Classes" })</li>
-                                    <li>@Html.ActionLink("View Gradebook (temp)", "Gradebook", "Home", htmlAttributes: new { title = "View Gradebook" })</li>
-                                       </ul>
-                            </li>*@
+                            <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title ="Admin">Admin<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" style="background: #363535; background: rgba(54,53,53,1);
+        background: -moz-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(54,53,53,1)), color-stop(24%, rgba(245,12,12,1)), color-stop(50%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
+        background: -webkit-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+        background: -o-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+        background: -ms-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+        background: linear-gradient(to bottom, rgba(54,53,53,1) 0%, rgba(245,12,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', endColorstr='#ffffff', GradientType=0 );">
+                                            <li><a href="#" style="color: white; font-weight: bold; font-style: oblique;" title ="Admin Tools">Admin Tools:</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li>@Html.ActionLink("Unassigned Users", "UnassignedUsers", "Home", htmlAttributes: new { title = "Unassigned Users" })</li>
+                                            <li>@Html.ActionLink("User Search", "UserSearch", "Home", htmlAttributes: new { title = "User Search" })</li>
+                                            <li>@Html.ActionLink("Full Dashboard", "Dashboard", "Home", htmlAttributes: new {title = "Full Dashboard"})</li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#" style="color: black; font-weight: bold; font-style: oblique;" title="Teacher Tools">Teacher Tools:</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li>@Html.ActionLink("Add A Class (temp)", "AddClass", "Home", htmlAttributes: new { title = "Add A Class" })</li>
+                                            <li>@Html.ActionLink("Add Assignment (temp)", "Class", "Home", htmlAttributes: new { title = "View Classes" })</li>
+                                            <li>@Html.ActionLink("View Gradebook (temp)", "Gradebook", "Home", htmlAttributes: new { title = "View Gradebook" })</li>
+                                               </ul>
+                                    </li>
                         </ul>
                         //
                         <div>
@@ -88,25 +92,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', end
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
                             <li>@Html.ActionLink("Account", "Index", "Manage")</li>
-
-                            @*<li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-family: helvetica, arial; color: orangered;">Teacher<span class="caret"></span></a>
-                                <ul class="dropdown-menu" style="background: #363535; background: rgba(54,53,53,1);
-background: -moz-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,133,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(54,53,53,1)), color-stop(24%, rgba(245,133,12,1)), color-stop(50%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
-background: -webkit-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,133,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-background: -o-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,133,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-background: -ms-linear-gradient(top, rgba(54,53,53,1) 0%, rgba(245,133,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-background: linear-gradient(to bottom, rgba(54,53,53,1) 0%, rgba(245,133,12,1) 24%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', endColorstr='#ffffff', GradientType=0 );">
-                                    <li><a href="#" style="color: white; font-weight: bold; font-style: oblique;">Teacher Tools:</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
-                                    <li>@Html.ActionLink("Add A Class (temp)", "AddClass", "Home", htmlAttributes: new { title = "Add A Class" })</li>
-                                    <li>@Html.ActionLink("Add Assignment (temp)", "Class", "Home", htmlAttributes: new { title = "View Classes" })</li>
-                                    <li>@Html.ActionLink("View Gradebook (temp)", "Gradebook", "Home", htmlAttributes: new { title = "View Gradebook" })</li>
-                                </ul>
-                            </li>*@
+                            
                         </ul>
                         @Html.Partial("_LoginPartial")
                     }
@@ -150,101 +136,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', end
         @{
             if (User.IsInRole("Administrator"))
             {
-                <div class="row col-sm-12 container well-sm" style="background-color: black;" id="accordion">
-                    <h3><span style="color: red; font-weight: bold; font-family: helvetica, arial;" class="glyphicon glyphicon-wrench">&nbsp;&nbsp;Administrator Dashboard Tools:</span></h3>
-                    <div>
-                        <ul style="font-family: helvetica, arial;">
-                            <li>@Html.ActionLink("Unassigned Users", "UnassignedUsers", "Home", htmlAttributes: new {title = "Unassigned Users"})</li>
-                            <li>@Html.ActionLink("User Search", "UserSearch", "Home", htmlAttributes: new {title = "User Search"})</li>
-                            <li>@Html.ActionLink("Full Dashboard", "Dashboard", "Home", htmlAttributes: new {title = "Full Dashboard"})</li>
-
-                            <li>@Html.ActionLink("Add A Class (temp)", "AddClass", "Home", htmlAttributes: new {title = "Add A Class"})</li>
-                            <li>@Html.ActionLink("Add Assignment (temp)", "Class", "Home", htmlAttributes: new {title = "View Classes"})</li>
-                            <li>@Html.ActionLink("View Gradebook (temp)", "Gradebook", "Home", htmlAttributes: new {title = "View Gradebook"})</li>
-                        </ul>
+                <div class="row col-sm-12 container well-sm" id="accordion" style="background-color: black;">
+                    <div align="left" class="col-sm-6">
+                        <span style="color: red; font-weight: bold;">Logged in as Administrator</span>
+                    </div>
+                    <div align="right" class="col-sm-6">
+                        <span style="color: whitesmoke"> &copy; @DateTime.Now.Year - JonatHelge Enterprises</span>
                     </div>
                 </div>
-//--
-
-//--
-                <script>
-                    $(function() {
-                        $("#accordion").accordion({
-                            collapsible: true,
-                            active: false,
-                            event: "click hoverintent"
-                        });
-                        $.event.special.hoverintent = {
-                            setup: function() {
-                                $(this).bind("mouseover", jQuery.event.special.hoverintent.handler);
-                            },
-                            teardown: function() {
-                                $(this).unbind("mouseover", jQuery.event.special.hoverintent.handler);
-                            },
-                            handler: function(event) {
-                                var currentX,
-                                    currentY,
-                                    timeout,
-                                    args = arguments,
-                                    target = $(event.target),
-                                    previousX = event.pageX,
-                                    previousY = event.pageY;
-
-                                function track(event) {
-                                    currentX = event.pageX;
-                                    currentY = event.pageY;
-                                };
-
-                                function clear() {
-                                    target
-                                        .unbind("mousemove", track)
-                                        .unbind("mouseout", clear);
-                                    clearTimeout(timeout);
-                                }
-
-                                function handler() {
-                                    var prop,
-                                        orig = event;
-
-                                    if ((Math.abs(previousX - currentX) +
-                                        Math.abs(previousY - currentY)) < 7) {
-                                        clear();
-
-                                        event = $.Event("hoverintent");
-                                        for (prop in orig) {
-                                            if (!(prop in event)) {
-                                                event[prop] = orig[prop];
-                                            }
-                                        }
-                                        // Prevent accessing the original event since the new event
-                                        // is fired asynchronously and the old event is no longer
-                                        // usable (#6028)
-                                        delete event.originalEvent;
-
-                                        target.trigger(event);
-                                    } else {
-                                        previousX = currentX;
-                                        previousY = currentY;
-                                        timeout = setTimeout(handler, 100);
-                                    }
-                                }
-
-                                timeout = setTimeout(handler, 100);
-                                target.bind({
-                                    mousemove: track,
-                                    mouseout: clear
-                                });
-                            }
-                        };
-                    });
-                </script>
             }
             else if (User.IsInRole("Teacher"))
             {
 
                 <div class="row col-sm-12 container well-sm" id="accordion" style="background-color: black;">
                     <div align="left" class="col-sm-6">
-                        <span style="color: orangered; font-weight: bold;">Teacher Dashboard Tools:</span>&nbsp;&nbsp; @Html.ActionLink("List of Classes", "Class", "Home") || @Html.ActionLink("Add a new Class", "AddClass", "Home")
+                        <span style="color: orangered; font-weight: bold;">Logged in as Teacher</span>
                     </div>
                     <div align="right" class="col-sm-6">
                         <span style="color: whitesmoke"> &copy; @DateTime.Now.Year - JonatHelge Enterprises</span>
@@ -253,28 +159,56 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', end
             }
             else if (User.IsInRole("Student"))
             {
-                <p>&copy; @DateTime.Now.Year - JonatHelge Enterprises</p>
+                <div class="row col-sm-12 container well-sm" id="accordion" style="background-color: black;">
+                    <div align="left" class="col-sm-6">
+                        <span style="color: yellow; font-weight: bold;">Logged in as Student</span>
+                    </div>
+                    <div align="right" class="col-sm-6">
+                        <span style="color: whitesmoke"> &copy; @DateTime.Now.Year - JonatHelge Enterprises</span>
+                    </div>
+                </div>
             }
             else if (User.IsInRole("Parent"))
             {
-                <p>&copy; @DateTime.Now.Year - JonatHelge Enterprises</p>
+                <div class="row col-sm-12 container well-sm" id="accordion" style="background-color: black;">
+                    <div align="left" class="col-sm-6">
+                        <span style="color: yellowgreen; font-weight: bold;">Logged in as a Parent</span>
+                    </div>
+                    <div align="right" class="col-sm-6">
+                        <span style="color: whitesmoke"> &copy; @DateTime.Now.Year - JonatHelge Enterprises</span>
+                    </div>
+                </div>
             }
             else
             {
-                <p>&copy; @DateTime.Now.Year - JonatHelge Enterprises</p>
+                <div class="row col-sm-12 container well-sm" id="accordion" style="background-color: black;">
+                    <div align="left" class="col-sm-6">
+                        
+                        <span style="color: lightblue; font-weight: bold;"></span>
+                    </div>
+                    <div align="right" class="col-sm-6">
+                        <span style="color: whitesmoke"> &copy; @DateTime.Now.Year - JonatHelge Enterprises</span>
+                    </div>
+                </div>
             }
-        }
+}
 
     </footer>
 </div>
-@section Scripts{
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    
-} 
-   @RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false)
+
+
+@*@section Scripts{
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+    }
+    @RenderSection("scripts", required: false)*@
 
 </body>
 </html>

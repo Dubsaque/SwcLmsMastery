@@ -1,8 +1,9 @@
 ﻿@using System.Activities.Expressions
 @using SwcLmsMastery.Models.DBModels
+@model IEnumerable<SwcLmsMastery.Models.DBModels.Course>
 
 <h3>Teacher Dashboard</h3>
-<hr />
+<hr/>
 <div class="row container">
     <div class="col-md-6">
         <h4>My Classes</h4>
@@ -15,27 +16,47 @@
                         <td>
 
                             <div align="left">
-                                <a href="@Url.Action("AddClass", "Home")">
-                                    <button>Add Class</button>
+                                <a href="@Url.Action("Create", "Courses")">
+                                    <button type="button" class="btn btn-primary">
+                                        Add a new class
+                                    </button>
                                 </a>
                             </div>
                         </td>
                         <td>
                             <div align="right">
-                                Current ( ) - Archived()
+                                Current (
+                             @{
+                                             using (var notArch = new SWC_LMSEntities())
+                                             {
+                                                 @notArch.Courses.Where(x => x.IsArchived == false).Count()
+                                                 
+                                             }
+                                          } ) - Archived ( 
+                            @{
+                                             using (var arch = new SWC_LMSEntities())
+                                             {
+                                                @arch.Courses.Where(x => x.IsArchived == true).Count()
+
+                                             }
+                                        } )
 </div></tr>
                 </thead>
                 <tbody>
-                <tr><td colspan="2" style="background-color: black;"></td></tr>
-
+                    
+                <tr style="height: 10px;"><td colspan="2"></td></tr>
+                <tr>
+                    <td style="background-color: black;">&nbsp;<span style="color: white;">Course Name:</span></td>
+                    <td style="background-color: black; text-align: right">&nbsp;<span style="color: white;">Number of Students</span>&nbsp;</td>
+                </tr>
                 @{
                     using (var classesList = new SWC_LMSEntities())
                     {
                         foreach (var i in classesList.Courses)
                         {
                             <tr>
-                                <td>&nbsp;@Html.ActionLink(@i.CourseName, "Class", "Home")</td>
-                                <td>@i.Rosters.Count</td>
+                                <td>&nbsp;@Html.ActionLink(@i.CourseName, "Edit", "Courses")</td>
+                                <td style="text-align: right">@i.Rosters.Count</td>
 
                             </tr>
 

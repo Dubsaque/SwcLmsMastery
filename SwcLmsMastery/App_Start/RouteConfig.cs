@@ -39,15 +39,11 @@ namespace SwcLmsMastery
                  url: "{controller}/{action}/{id}",
                  defaults: new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
     );
-            routes.MapRoute(
-                 name: "Teacher",
-                 url: "{controller}/{action}/{id}",
-                 defaults: new { controller = "Teacher", action = "Index", id = UrlParameter.Optional }
-    );
+           
             routes.MapRoute(
               name: "Courses",
               url: "{controller}/{action}/{id}",
-              defaults: new { controller = "Courses", action = "Index", id = UrlParameter.Optional }
+              defaults: new {id = UrlParameter.Optional }
  );
         }
     }
