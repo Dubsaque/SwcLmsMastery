@@ -85,6 +85,7 @@ namespace SwcLmsMastery.Repositories
         {
             using (var context = new SWC_LMSEntities())
             {
+                return
                 context.LmsUsers.Where(x => x.FirstName.ToUpper().Contains(firstName.ToUpper()) ||
                                             x.LastName.ToUpper().Contains(lastName.ToUpper()) ||
                                             x.Email.ToUpper().Contains(eMail.ToUpper())).ToList();

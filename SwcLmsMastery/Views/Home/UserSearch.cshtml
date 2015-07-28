@@ -1,5 +1,5 @@
 ﻿@using SwcLmsMastery.Models.DBModels
-@model IEnumerable<SwcLmsMastery.Models.DBModels.LmsUser>
+@model List<SwcLmsMastery.Models.DBModels.LmsUser>
 
 @{
     ViewBag.Title = "View";
@@ -8,10 +8,10 @@
 
 @Scripts.Render("~/bundles/Jquery")
 <script>
-    $(function() {
-        $('#searchBtn').click(function() {
-            var firstname = $('#fNameSearch').val();
-            var lastname = $('#lNameSearch').val();
+    $(function () {
+        $('#searchBtn').click(function () {
+            var firstName = $('#fNameSearch').val();
+            var lastName = $('#lNameSearch').val();
             var email = $('#eMailSearch').val();
 
             var userObject = {
@@ -20,45 +20,77 @@
                 Email: email
             };
 
-
             $.ajax
-            ({
-                type: 'POST',
-                url: 'api/UserSearch',
-                datatype: 'json',
-                $('#searchResultsTable').EMPTY();
-                 
-        }}
-                {
-                alert('Done');
+             ({
+                 type: 'POST',
+                 url: '/api/UserSearch',
+                 dataType: 'json',
+                 contentType: 'application/json; charset=utf-8',
+                 data: JSON.stringify(userObject),
+                 success: function (data) {
+                     $('#userTable').empty();
+                     $.each(data, function (i, user) {
+                         $('#userTable').append('<div class="col-md-3">' + user.FirstName + '</div>');
+                         $('#userTable').append('<div class="col-md-3">' + user.LastName + '</div>');
+                         $('#userTable').append('<div class="col-md-3">' + user.Email + '</div>');
+                     });
+
+                     // THIS DOES EXACTLY THE SAME THING AS THE $.each CODE ABOVE
+                     //for (var i = 0; i < data.length; i++) {
+                     //    var user = data[i];
+                     //    $('#userTable').append('<div class="col-md-3"><a href="Account/AuthorizeUser/' + user.Id + '">Authorize</a></div>');
+                     //    $('#userTable').append('<div class="col-md-3">' + user.FirstName + '</div>');
+                     //    $('#userTable').append('<div class="col-md-3">' + user.LastName + '</div>');
+                     //    $('#userTable').append('<div class="col-md-3">' + user.Email + '</div>');
+                     //}
+
+                 }
+             });
         });
-        
     });
-
-
 </script>
 
 
-<h4>User Search</h4>
+
+
+
+<h2>User Search</h2>
 <div class="container">
-    <div class="row col-md-3">
-        <span>firstname</span>
-        <input type="text" id="fNameSearch"/>
+    <div class="row">
+        <div class="col-md-3">
+            <span>First Name</span>
+        </div>
+        <div class="col-md-3">
+            <span>Last Name</span>
+        </div>
+        <div class="col-md-3">
+            <span>Email</span>
+        </div>
+        <div class="col-md-3">
+        </div>
     </div>
-    <div class="row col-md-3">
-        <span>lastname</span>
-        <input type="text" id="lNameSearch"/>
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" id="firstNameSearch" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" id="lastNameSearch" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" id="emailSearch" />
+        </div>
+        <div class="col-md-3">
+            <span class="btn btn-default" id="searchBtn">Search</span>
+        </div>
     </div>
-    <div class="row col-md-3">
-        <span>email</span>
-        <input type="text" id="eMailSearch"/>
-    </div>
-    <div class="row col-md-3">
-        <span class="btn btn-default" id="searchBtn">
-            Search
-        </span>
-    </div>
+    <hr />
+    @*<div id="userTable">
+        @foreach (var user in Model)
+        { <div class="row">
+            <div class="col-md-3">@user.FirstName</div>
+            <div class="col-md-3">@user.LastName</div>
+            <div class="col-md-3">@user.Email</div>
+        </div>
+        }
+    </div>*@
 </div>
-<hr/>
-<h4>Results</h4>
-<div class="container" id="searchResultsTable"></div>
