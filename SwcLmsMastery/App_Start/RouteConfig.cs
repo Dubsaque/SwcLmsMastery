@@ -45,6 +45,11 @@ namespace SwcLmsMastery
               url: "{controller}/{action}/{id}",
               defaults: new {id = UrlParameter.Optional }
  );
+            routes.MapRoute(
+              name: "Assignments",
+              url: "{controller}/{action}/{id}",
+              defaults: new { id = UrlParameter.Optional }
+ );
         }
     }
 }
