@@ -1,9 +1,9 @@
 ﻿@using SwcLmsMastery.Models.DBModels
-@model List<SwcLmsMastery.Models.DBModels.LmsUser>
+@model IEnumerable<SwcLmsMastery.Models.DBModels.LmsUser>
 
 @{
     ViewBag.Title = "View";
-    Layout = "~/Views/Shared/_DashLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Scripts.Render("~/bundles/Jquery")
@@ -32,7 +32,10 @@
                      $.each(data, function (i, user) {
                          $('#userTable').append('<div class="col-md-3">' + user.FirstName + '</div>');
                          $('#userTable').append('<div class="col-md-3">' + user.LastName + '</div>');
-                         $('#userTable').append('<div class="col-md-3">' + user.Email + '</div>');
+                         //$('#userTable').append('<div class="col-md-3">' + user.Email + '</div>');
+                         //below should concat the e-mail address to a mailto function
+                         $('#userTable').append('<div class="col-md-3"><a href="mailto:' + user.Email + '">' + user.Email + '</a></div>');
+                         $('#userTable').append('<div class="col-md-3"><a href="@Url.Action("../Manage/UserDetails")/' + user.Id + '">Details</a></div>');
                      });
 
                      // THIS DOES EXACTLY THE SAME THING AS THE $.each CODE ABOVE
@@ -71,26 +74,43 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <input type="text" id="firstNameSearch" />
+            <input type="text" id="fNameSearch" />
         </div>
         <div class="col-md-3">
-            <input type="text" id="lastNameSearch" />
+            <input type="text" id="lNameSearch" />
         </div>
         <div class="col-md-3">
-            <input type="text" id="emailSearch" />
+            <input type="text" id="eMailSearch" />
         </div>
         <div class="col-md-3">
             <span class="btn btn-default" id="searchBtn">Search</span>
         </div>
     </div>
-    <hr />
-    @*<div id="userTable">
-        @foreach (var user in Model)
-        { <div class="row">
-            <div class="col-md-3">@user.FirstName</div>
-            <div class="col-md-3">@user.LastName</div>
-            <div class="col-md-3">@user.Email</div>
+    <hr/>
+    <div id="searchTableHeader">
+        <div class="row">
+            <div class="col-md-3"><span style="font-weight: bold;">First Name: </span></div>
+            <div class="col-md-3"><span style="font-weight: bold;">Last Name:</span> </div>
+            <div class="col-md-3"><span style="font-weight: bold;">Email Address:</span> </div>
+            <div class="col-md-3"></div>
         </div>
-        }
-    </div>*@
+
+    </div>
+    <div id="userTable">
+        @{
+            using (var context = new SWC_LMSEntities())
+            {
+                foreach (var user in context.LmsUsers) { 
+                <div class="row">
+                    <div class="col-md-3">@user.FirstName</div>
+                    <div class="col-md-3">@user.LastName</div>
+                    <div class="col-md-3"><a href="mailto:@user.Email">@user.Email</a>
+                    </div>
+                    <div class="col-md-3">@Html.ActionLink("Details", "UserDetails", "Manage", new { user.UserId }, null)</div>
+
+                </div>}
+            }
+}
+        
+    </div>
 </div>

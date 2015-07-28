@@ -46,7 +46,7 @@
                                             using (var context = new SWC_LMSEntities())
                                             {
                                                 @context.LmsUsers.Where(x => x.IsApproved == null).Count()
-                                                ;
+                                                
                                             }
                                         }
                                     </span>
@@ -100,97 +100,136 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg2" id="myModal2">
                     User Search
                 </button>
-
+                <!-- USER SEARCH MODAL -->
                 <div class="modal fade bs-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                     <div class="modal-dialog modal-lg">
-                        <div class="modal-content" style="width: 800px; margin-left: -125px;">
+                        <div class="modal-content" style="width: 1000px; margin-left: -200px;">
 
 
 
                             <div class="container well modal-body" style="border-color: black; border-style: solid; border-radius: 5px; margin: 25px; overflow-y: scroll; max-height: 85%;" name="_modBod">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="font-size: 15px;">Close Window</span></button>
+                                <button type="button" class="close btn btn-primary" data-dismiss="modal" aria-label="Close"><span style="font-size: 15px;">Close Window</span></button>
                                 <script src="~/Scripts/jquery-2.1.4.min.js"></script>
-                                <script>
-                                    $(function() {
-                                        $('idForLname').click(function() {
-                                            var user = {
-                                                UserId: 0,
-                                                LastName: $('#idForLname').val(),
+                            <!-- SHIT GOES HERE YO!!!!-->
 
+                                <script>
+                                    $(function () {
+                                        $('#searchBtn').click(function () {
+                                            var firstName = $('#fNameSearch').val();
+                                            var lastName = $('#lNameSearch').val();
+                                            var email = $('#eMailSearch').val();
+
+                                            var userObject = {
+                                                FirstName: firstName,
+                                                LastName: lastName,
+                                                Email: email
                                             };
 
-                                            $.post();
+                                            $.ajax
+                                             ({
+                                                 type: 'POST',
+                                                 url: '/api/UserSearch',
+                                                 dataType: 'json',
+                                                 contentType: 'application/json; charset=utf-8',
+                                                 data: JSON.stringify(userObject),
+                                                 success: function (data) {
+                                                     $('#userTable').empty();
+                                                     $.each(data, function (i, user) {
+                                                         $('#userTable').append('<div class="col-md-3">' + user.FirstName + '</div>');
+                                                         $('#userTable').append('<div class="col-md-3">' + user.LastName + '</div>');
+                                                         //$('#userTable').append('<div class="col-md-3">' + user.Email + '</div>');
+                                                         //below should concat the e-mail address to a mailto function
+                                                         $('#userTable').append('<div class="col-md-3"><a href="mailto:' + user.Email + '">' + user.Email + '</a></div>');
+                                                         $('#userTable').append('<div class="col-md-3"><a href="@Url.Action("../Manage/UserDetails")/' + user.Id + '">Details</a></div>');
+                                                     });
 
-                                            $.ajax({
-                                                url: '@Url.Action("UserSearch")',
-                                                contentType: 'application/json',
-                                                dataType: 'json',
-                                                type: 'POST',
-                                                data: JSON.stringify(user),
-                                                success: function(data) {
-                                                    $('#theList').EMPTY();
-                                                    for (var i = 0; i < data.length; i++) {
-                                                        var usr = data[i];
-                                                        $('#theList').append('<li>' + usr.LastName + ' TEST' + '</li>');
-                                                    }
+                                                     // THIS DOES EXACTLY THE SAME THING AS THE $.each CODE ABOVE
+                                                     //for (var i = 0; i < data.length; i++) {
+                                                     //    var user = data[i];
+                                                     //    $('#userTable').append('<div class="col-md-3"><a href="Account/AuthorizeUser/' + user.Id + '">Authorize</a></div>');
+                                                     //    $('#userTable').append('<div class="col-md-3">' + user.FirstName + '</div>');
+                                                     //    $('#userTable').append('<div class="col-md-3">' + user.LastName + '</div>');
+                                                     //    $('#userTable').append('<div class="col-md-3">' + user.Email + '</div>');
+                                                     //}
 
-                                                }
-                                            });
+                                                 }
+                                             });
                                         });
                                     });
                                 </script>
 
-                                <h4 class="modal-title">User Search</h4>
-                                <div class="container well" style="border-color: black; border-style: solid; border-radius: 5px;">
-                                    <br/>
-                                    <div class="well">
-
-                                        <div class="row todo-item">
-                                            <input type="hidden" value="Id" name="Id"/>
-                                            <div class="col-md-2">
-                                                <input type="text" id="idForLname" name="Lname" value="Last Name"/>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input type="text" id="idForFname" name="Fname" value="First Name"/>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input type="text" id="idForemail" name="Email" value="Email"/>
-                                            </div>
 
 
-                                            <div class="col-md-1">
-                                                <button class="btn btn-default" id="dets">Search</button>
-                                            </div>
 
+
+                                <h2>User Search</h2>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <span>First Name</span>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span>Last Name</span>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span>Email</span>
+                                        </div>
+                                        <div class="col-md-3">
                                         </div>
                                     </div>
-                                    <hr/>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <input type="text" id="fNameSearch" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" id="lNameSearch" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" id="eMailSearch" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span class="btn btn-default" id="searchBtn">Search</span>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div id="searchTableHeader">
+                                        <div class="row">
+                                            <div class="col-md-3"><span style="font-weight: bold;">First Name: </span></div>
+                                            <div class="col-md-3"><span style="font-weight: bold;">Last Name:</span> </div>
+                                            <div class="col-md-3"><span style="font-weight: bold;">Email Address:</span> </div>
+                                            <div class="col-md-3"></div>
+                                        </div>
+
+                                    </div>
+                                    <div id="userTable">
+                                        @{
+                                            using (var context = new SWC_LMSEntities())
+                                            {
+                                                foreach (var user in context.LmsUsers)
+                                                {
+                                                    <div class="row">
+                                                        <div class="col-md-3">@user.FirstName</div>
+                                                        <div class="col-md-3">@user.LastName</div>
+                                                        <div class="col-md-3">
+                                                            <a href="mailto:@user.Email">@user.Email</a>
+                                                        </div>
+                                                        <div class="col-md-3">@Html.ActionLink("Details", "UserDetails", "Manage", new { user.UserId }, null)</div>
+
+                                                    </div>}
+                                            }
+                                        }
+
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-
-
-
-
-
-                @*<a href="@Url.Action("UserSearch", "Home")">
-                    <button class="btn btn-primary" type="button"> User Search <span class="badge"></span></button>
-                </a>*@
-
+                                <!-- SHIT STOPS HERE YO!!!!-->
             </td>
         </tr>
     </table>
 
 </div>
 <hr/>
-<h4> HELGE! Use this!!!</h4>
-@Html.ActionLink("User Search From Class Today!", "UserSearch", "Home")
-<hr/>
 
-<hr/>
 <div align="center" class="container">
     <h3>SWC LMS Teacher Dashboard (Admin Access)</h3>
     <hr />
