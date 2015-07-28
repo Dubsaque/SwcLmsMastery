@@ -1,0 +1,64 @@
+﻿@using SwcLmsMastery.Models.DBModels
+@model IEnumerable<SwcLmsMastery.Models.DBModels.LmsUser>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_DashLayout.cshtml";
+}
+
+@Scripts.Render("~/bundles/Jquery")
+<script>
+    $(function() {
+        $('#searchBtn').click(function() {
+            var firstname = $('#fNameSearch').val();
+            var lastname = $('#lNameSearch').val();
+            var email = $('#eMailSearch').val();
+
+            var userObject = {
+                FirstName: firstName,
+                LastName: lastName,
+                Email: email
+            };
+
+
+            $.ajax
+            ({
+                type: 'POST',
+                url: 'api/UserSearch',
+                datatype: 'json',
+                $('#searchResultsTable').EMPTY();
+                 
+        }}
+                {
+                alert('Done');
+        });
+        
+    });
+
+
+</script>
+
+
+<h4>User Search</h4>
+<div class="container">
+    <div class="row col-md-3">
+        <span>firstname</span>
+        <input type="text" id="fNameSearch"/>
+    </div>
+    <div class="row col-md-3">
+        <span>lastname</span>
+        <input type="text" id="lNameSearch"/>
+    </div>
+    <div class="row col-md-3">
+        <span>email</span>
+        <input type="text" id="eMailSearch"/>
+    </div>
+    <div class="row col-md-3">
+        <span class="btn btn-default" id="searchBtn">
+            Search
+        </span>
+    </div>
+</div>
+<hr/>
+<h4>Results</h4>
+<div class="container" id="searchResultsTable"></div>
