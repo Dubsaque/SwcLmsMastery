@@ -18,50 +18,40 @@
     @Html.AntiForgeryToken()
     <h1>@ViewBag.Message</h1>
     <div class="row">
-    <div class="col-md-4">
-        <div class="well">
-            @Html.HiddenFor(m => m.UserId, Model.UserId)
-            @Html.HiddenFor(m => m.Email, Model.Email)
-            <div class="form-group">
-                @Html.Label("First Name", new {title = "First Name", @class = "control-label"})
-                @Html.TextBoxFor(m => m.FirstName, Model.FirstName, new {title = "First Name", @class = "form-control"})
-            </div>
-
-            <div class="form-group">
-                @Html.Label("Last Name", new {title = "Last Name", @class = "control-label"})
-                @Html.TextBoxFor(m => m.LastName, Model.LastName, new {title = "Last Name", @class = "form-control"})
-            </div>
-           
-            <div class="form-group">
-                @Html.Label("Grade Level", new {title = "Grade Level", @class = "control-label"})
-                <br/>
-                @Html.DropDownListFor(m => m.GradeLevelId, TheOneRepo.GetGradeLevels)
-            </div>
-            <div class="form-group">
-                &nbsp;@Html.Label("Roles", new {title = "Roles", @class = "control-label"})
-
-        
-             
-                <hr/>
-                <br/>
+        <div class="col-md-4">
+            <div class="well">
+                @Html.HiddenFor(m => m.UserId, Model.UserId)
+                @Html.HiddenFor(m => m.Email, Model.Email)
                 <div class="form-group">
-                    
-                   
-                    &nbsp;&nbsp;&nbsp;@Html.Label("Click Here To Authorize User In Requested Role: ", new {title = "Login Approved", @class = "control-label"})
+                    @Html.Label("First Name", new {title = "First Name", @class = "control-label"})
+                    @Html.TextBoxFor(m => m.FirstName, Model.FirstName, new {title = "First Name", @class = "form-control"})
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Last Name", new {title = "Last Name", @class = "control-label"})
+                    @Html.TextBoxFor(m => m.LastName, Model.LastName, new {title = "Last Name", @class = "form-control"})
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Grade Level", new {title = "Grade Level", @class = "control-label"})
+                    <br/>
+                    @Html.DropDownListFor(m => m.GradeLevelId, TheOneRepo.GetGradeLevels)
+                </div>
+                <div class="form-group">
+                    &nbsp;@Html.Label("Click Here To Authorize", new {title = "Login Approved", @class = "control-label"})
+                    <br/>
+                    &nbsp;@Html.Label("User In Requested Role: ", new {title = "Login Approved", @class = "control-label"})
                     &nbsp;&nbsp;@Html.CheckBox("IsApproved")
                     <br/>
                     @*&nbsp;&nbsp;&nbsp;@Html.Label("Locked Out: ", new { title = "Locked Out", @class = "control-label" })
-                    &nbsp;<input type="submit" class="btn btn-default" value="Unlock" title="Click to Unlock" />
+                    &nbsp;<input type="submit" class="btn btn-default" value="Unlock" title="Click to Unlock" />*@
                     <br/>
-                    <br/>
-                    <br/>*@
                     <div align="center">
-                        &nbsp;&nbsp;<input type="button" class="btn btn-default" value="Cancel" title="Click to Cancel" onclick="window.location = '/home/dashboard'"/>
-                        &nbsp;&nbsp;<input type="submit" class="btn btn-primary" value="Save" title="Click to Save"/>
+                        <input type="button" class="btn btn-default" value="Cancel" title="Click to Cancel" onclick="window.location = '/home/dashboard'"/>
+                        <input type="submit" class="btn btn-primary" value="Save" title="Click to Save"/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-        </div>
-}
+}        
