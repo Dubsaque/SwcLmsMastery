@@ -40,33 +40,13 @@
             <div class="form-group">
                 &nbsp;@Html.Label("Roles", new {title = "Roles", @class = "control-label"})
 
-               
-
-                @*<br/>
-
-                @foreach (AspNetRole r in ViewBag.UserRoles)
-                {
-                    @Html.CheckBox(r.Id);
-                    @Html.Label(r.Name);
-                    <br/>
-                }
-                <br/>*@
-
-
-                <hr/>
-                
-                      @*
-                @{
-            var idToPass = Model.Email;
-    TheOneRepo.InsertUserToAdmin(idToPass);
-                }*@
-               
-               
+        
              
                 <hr/>
                 <br/>
                 <div class="form-group">
-                    <h5>Requested Role: @Model.</h5>
+                    
+                   
                     &nbsp;&nbsp;&nbsp;@Html.Label("Click Here To Authorize User In Requested Role: ", new {title = "Login Approved", @class = "control-label"})
                     &nbsp;&nbsp;@Html.CheckBox("IsApproved")
                     <br/>

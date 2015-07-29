@@ -388,7 +388,6 @@
     <Content Include="Views\Assignments\Details.cshtml" />
     <Content Include="Views\Assignments\Edit.cshtml" />
     <Content Include="Views\Assignments\Index.cshtml" />
-    <Content Include="Views\Courses\EditCourse.cshtml" />
     <Content Include="Views\Rosters\Create.cshtml" />
     <Content Include="Views\Rosters\Delete.cshtml" />
     <Content Include="Views\Rosters\Details.cshtml" />
