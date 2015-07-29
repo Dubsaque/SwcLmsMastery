@@ -368,10 +368,27 @@ namespace SwcLmsMastery.Controllers
                     dbUser.IsApproved = user.IsApproved;
                     //the following was an attempt to activate the stored procedure 
                     //to input this user's unique ID into the AspNetUserRoles table on DB.
-             
+                    if (dbUser.SuggestedRole == "Administrator"){
+                        var idToPass = dbUser.Email;
+                        TheOneRepo.InsertUserToAdmin(idToPass);
+                    }
+                    else if (dbUser.SuggestedRole == "Teacher")
+                    {
+                        var idToPass = dbUser.Email;
+                        TheOneRepo.InsertUserToTeacher(idToPass);
+                    }
+                    else if (dbUser.SuggestedRole == "Student")
+                    {
+                        var idToPass = dbUser.Email;
+                        TheOneRepo.InsertUserToStudent(idToPass);
+                    }
+                    else if (dbUser.SuggestedRole == "Parent")
+                    {
+                        var idToPass = dbUser.Email;
+                        TheOneRepo.InsertUserToParent(idToPass);
+                    }
                     //THIS WORKS
-                    //var idToPass = dbUser.Email;
-                    //TheOneRepo.InsertUserToAdmin(idToPass);
+
                
 
                     // TODO ROLEs...
