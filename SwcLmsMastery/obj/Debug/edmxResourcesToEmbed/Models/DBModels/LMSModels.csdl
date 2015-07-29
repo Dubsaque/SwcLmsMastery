@@ -395,10 +395,18 @@
       <Parameter Name="GradeLevelId" Mode="In" Type="Byte" />
       <Parameter Name="IsArchived" Mode="In" Type="Boolean" />
     </FunctionImport>
-    <FunctionImport Name="InsertUserToAdminRole" />
-    <FunctionImport Name="InsertUserToParentRole" />
-    <FunctionImport Name="InsertUserToStudentRole" />
-    <FunctionImport Name="InsertUserToTeacherRole" />
+    <FunctionImport Name="InsertUserToAdminRole">
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertUserToParentRole">
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertUserToStudentRole">
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertUserToTeacherRole">
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GradeLevelSelectAll_Result">
     <Property Type="Byte" Name="GradeLevelId" Nullable="false" />

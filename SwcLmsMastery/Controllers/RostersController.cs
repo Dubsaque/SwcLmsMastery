@@ -11,125 +11,116 @@ using SwcLmsMastery.Models.DBModels;
 
 namespace SwcLmsMastery.Controllers
 {
-    [Authorize(Roles = "Administrator, Teacher")]
-    public class CoursesController : Controller
+    public class RostersController : Controller
     {
-
         private SWC_LMSEntities db = new SWC_LMSEntities();
 
-        // GET: Courses
+        // GET: Rosters
         public async Task<ActionResult> Index()
         {
-            var courses = db.Courses.Include(c => c.Subject).Include(c => c.LmsUser);
-            return View(await courses.ToListAsync());
+            var rosters = db.Rosters.Include(r => r.Course).Include(r => r.LmsUser);
+            return View(await rosters.ToListAsync());
         }
 
-        // GET: Courses/Details/5
+        // GET: Rosters/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = await db.Courses.FindAsync(id);
-            if (course == null)
+            Roster roster = await db.Rosters.FindAsync(id);
+            if (roster == null)
             {
                 return HttpNotFound();
             }
-            return View(course);
+            return View(roster);
         }
 
-        // GET: Courses/Create
-        [Authorize(Roles = "Administrator, Teacher")]
+        // GET: Rosters/Create
         public ActionResult Create()
         {
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectName");
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName");
             ViewBag.UserId = new SelectList(db.LmsUsers, "UserId", "Id");
             return View();
         }
 
-        // POST: Courses/Create
+        // POST: Rosters/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator, Teacher")]
-        public async Task<ActionResult> Create([Bind(Include = "CourseId,UserId,SubjectId,CourseName,CourseDescription,GradeLevel,IsArchived,StartDate,EndDate")] Course course)
+        public async Task<ActionResult> Create([Bind(Include = "RosterId,CourseId,UserId,CurrentGrade,IsDeleted")] Roster roster)
         {
             if (ModelState.IsValid)
             {
-                db.Courses.Add(course);
+                db.Rosters.Add(roster);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectName", course.SubjectId);
-            ViewBag.UserId = new SelectList(db.LmsUsers, "UserId", "Id", course.UserId);
-            return View(course);
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", roster.CourseId);
+            ViewBag.UserId = new SelectList(db.LmsUsers, "UserId", "Id", roster.UserId);
+            return View(roster);
         }
 
-        // GET: Courses/Edit/5
-        [Authorize(Roles = "Administrator, Teacher")]
+        // GET: Rosters/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = await db.Courses.FindAsync(id);
-            if (course == null)
+            Roster roster = await db.Rosters.FindAsync(id);
+            if (roster == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectName", course.SubjectId);
-            ViewBag.UserId = new SelectList(db.LmsUsers, "UserId", "Id", course.UserId);
-            return View(course);
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", roster.CourseId);
+            ViewBag.UserId = new SelectList(db.LmsUsers, "UserId", "Id", roster.UserId);
+            return View(roster);
         }
 
-        // POST: Courses/Edit/5
+        // POST: Rosters/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator, Teacher")]
-        public async Task<ActionResult> Edit([Bind(Include = "CourseId,UserId,SubjectId,CourseName,CourseDescription,GradeLevel,IsArchived,StartDate,EndDate")] Course course)
+        public async Task<ActionResult> Edit([Bind(Include = "RosterId,CourseId,UserId,CurrentGrade,IsDeleted")] Roster roster)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(course).State = EntityState.Modified;
+                db.Entry(roster).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Dashboard", "Home");
+                return RedirectToAction("Index");
             }
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectName", course.SubjectId);
-            ViewBag.UserId = new SelectList(db.LmsUsers, "UserId", "Id", course.UserId);
-            return View(course);
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", roster.CourseId);
+            ViewBag.UserId = new SelectList(db.LmsUsers, "UserId", "Id", roster.UserId);
+            return View(roster);
         }
 
-        // GET: Courses/Delete/5
-        [Authorize(Roles = "Administrator, Teacher")]
+        // GET: Rosters/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = await db.Courses.FindAsync(id);
-            if (course == null)
+            Roster roster = await db.Rosters.FindAsync(id);
+            if (roster == null)
             {
                 return HttpNotFound();
             }
-            return View(course);
+            return View(roster);
         }
 
-        // POST: Courses/Delete/5
-
+        // POST: Rosters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator, Teacher")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Course course = await db.Courses.FindAsync(id);
-            db.Courses.Remove(course);
+            Roster roster = await db.Rosters.FindAsync(id);
+            db.Rosters.Remove(roster);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

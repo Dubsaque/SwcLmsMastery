@@ -368,9 +368,11 @@ namespace SwcLmsMastery.Controllers
                     dbUser.IsApproved = user.IsApproved;
                     //the following was an attempt to activate the stored procedure 
                     //to input this user's unique ID into the AspNetUserRoles table on DB.
-                    //var email = dbUser.Email;
-                    //context.InsertUserToAdminRole(email);
-                    
+             
+                    //THIS WORKS
+                    //var idToPass = dbUser.Email;
+                    //TheOneRepo.InsertUserToAdmin(idToPass);
+               
 
                     // TODO ROLEs...
                     // save user

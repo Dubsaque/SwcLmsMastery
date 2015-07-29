@@ -132,7 +132,8 @@
 <div class="container body-content">
     @RenderBody()
     <hr/>
-    <footer>
+
+    @*<footer >
         @{
             if (User.IsInRole("Administrator"))
             {
@@ -193,7 +194,7 @@
             }
 }
 
-    </footer>
+    </footer>*@
 </div>
 
     @Scripts.Render("~/bundles/jquery")

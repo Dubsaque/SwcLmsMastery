@@ -37,6 +37,9 @@
             </div>
             <div class="form-group">
                 &nbsp;@Html.Label("Roles", new {title = "Roles", @class = "control-label"})
+
+               
+
                 @*<br/>
 
                 @foreach (AspNetRole r in ViewBag.UserRoles)
@@ -46,8 +49,19 @@
                     <br/>
                 }
                 <br/>*@
+
+
                 <hr/>
+                @*<input type="checkbox" class="btn btn-primary" name="ApproveAdmin" value="Approve As Admin"/>*@
+          
+                      @*<button>Add as Admin
+                @{
+            var idToPass = Model.Email;
+    TheOneRepo.InsertUserToAdmin(idToPass);
+                }</button>*@
                
+               
+             
                 <hr/>
                 <br/>
                 <div class="form-group">

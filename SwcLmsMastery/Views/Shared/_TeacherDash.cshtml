@@ -55,7 +55,7 @@
                         foreach (var i in classesList.Courses)
                         {
                             <tr>
-                                <td>&nbsp;@Html.ActionLink(@i.CourseName, "Edit", "Courses")</td>
+                                <td>&nbsp;@Html.ActionLink(@i.CourseName, "Edit", "Courses", new { id = i.CourseId }, null)</td>
                                 <td style="text-align: right">@i.Rosters.Count</td>
 
                             </tr>

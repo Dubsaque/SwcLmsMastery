@@ -120,5 +120,36 @@ namespace SwcLmsMastery.Repositories
             }
         }
 
+        public static void InsertUserToAdmin(string email)
+        {
+            using (var db = new SWC_LMSEntities())
+            {   
+                db.InsertUserToAdminRole(email);
+            }
+        }
+
+        public static void InsertUserToTeacher(string email)
+        {
+            using (var db = new SWC_LMSEntities())
+            {
+                db.InsertUserToTeacherRole(email);
+            }
+        }
+
+        public static void InsertUserToStudent(string email)
+        {
+            using (var db = new SWC_LMSEntities())
+            {
+                db.InsertUserToStudentRole(email);
+            }
+        }
+
+        public static void InsertUserToParent(string email)
+        {
+            using (var db = new SWC_LMSEntities())
+            {
+                db.InsertUserToParentRole(email);
+            }
+        }
     }
 }

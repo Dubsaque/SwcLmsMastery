@@ -1,4 +1,5 @@
 ﻿@using SwcLmsMastery.Models.DBModels
+@using SwcLmsMastery.Repositories
 @model IEnumerable<SwcLmsMastery.Models.DBModels.LmsUser>
 
 @{
@@ -107,7 +108,8 @@
                     <div class="col-md-3"><a href="mailto:@user.Email">@user.Email</a>
                     </div>
                     <div class="col-md-3">@Html.ActionLink("Details", "UserDetails", "Manage", new { user.UserId }, null)</div>
-
+            
+                    @*<div class="col-md-3">@Html.ActionLink("Details", "UserDetails", "Manage", new { user.UserId }, null)</div>*@
                 </div>}
             }
 }

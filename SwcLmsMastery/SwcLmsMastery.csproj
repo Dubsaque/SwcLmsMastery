@@ -180,6 +180,7 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RostersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -388,6 +389,11 @@
     <Content Include="Views\Assignments\Edit.cshtml" />
     <Content Include="Views\Assignments\Index.cshtml" />
     <Content Include="Views\Courses\EditCourse.cshtml" />
+    <Content Include="Views\Rosters\Create.cshtml" />
+    <Content Include="Views\Rosters\Delete.cshtml" />
+    <Content Include="Views\Rosters\Details.cshtml" />
+    <Content Include="Views\Rosters\Edit.cshtml" />
+    <Content Include="Views\Rosters\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -88,13 +88,6 @@ VALUES (@CourseId, @CourseName, @CourseDescription, @StartDate, @EndDate, @Grade
 SET @CourseId = SCOPE_IDENTITY();
 GO
 
-CREATE PROCEDURE GetGUID @Email varchar(50) AS
-
-SELECT Id
-FROM AspNetUsers
-WHERE Email = @Email
-
-GO
 
 CREATE PROCEDURE InsertUserToRole @Email varchar(50),  AS
 
@@ -104,27 +97,22 @@ WHERE Email = @Email
 
 GO
 
-
-CREATE PROCEDURE InsertUserToAdminRole AS
-DECLARE @Email varchar(50)
+ALTER PROCEDURE InsertUserToAdminRole @Email varchar(50) AS
 INSERT INTO AspNetUserRoles (UserId, RoleId)
 SELECT Id, '1' FROM AspNetUsers WHERE email = @Email 
 GO
 
-CREATE PROCEDURE InsertUserToTeacherRole AS
-DECLARE @Email varchar(50)
+ALTER PROCEDURE InsertUserToTeacherRole @Email varchar(50) AS
 INSERT INTO AspNetUserRoles (UserId, RoleId)
 SELECT Id, '2' FROM AspNetUsers WHERE email = @Email
 GO
 
-CREATE PROCEDURE InsertUserToStudentRole AS
-DECLARE @Email varchar(50)
+ALTER PROCEDURE InsertUserToStudentRole @Email varchar(50) AS
 INSERT INTO AspNetUserRoles (UserId, RoleId)
 SELECT Id, '3' FROM AspNetUsers WHERE email = @Email
 GO
 
-CREATE PROCEDURE InsertUserToParentRole AS
-DECLARE @Email varchar(50)
+ALTER PROCEDURE InsertUserToParentRole @Email varchar(50) AS
 INSERT INTO AspNetUserRoles (UserId, RoleId)
 SELECT Id, '4' FROM AspNetUsers WHERE email = @Email
 GO

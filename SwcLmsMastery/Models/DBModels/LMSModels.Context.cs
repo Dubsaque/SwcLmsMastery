@@ -202,29 +202,40 @@ namespace SwcLmsMastery.Models.DBModels
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddCourse", courseId, courseNameParameter, courseDescriptionParameter, startDateParameter, endDateParameter, gradeLevelIdParameter, isArchivedParameter);
         }
     
-        public virtual int InsertUserToAdminRole()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToAdminRole");
-        }
-
         public virtual int InsertUserToAdminRole(string email)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToAdminRole");
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToAdminRole", emailParameter);
         }
     
-        public virtual int InsertUserToParentRole()
+        public virtual int InsertUserToParentRole(string email)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToParentRole");
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToParentRole", emailParameter);
         }
     
-        public virtual int InsertUserToStudentRole()
+        public virtual int InsertUserToStudentRole(string email)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToStudentRole");
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToStudentRole", emailParameter);
         }
     
-        public virtual int InsertUserToTeacherRole()
+        public virtual int InsertUserToTeacherRole(string email)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToTeacherRole");
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserToTeacherRole", emailParameter);
         }
     }
 }
