@@ -400,7 +400,7 @@ namespace SwcLmsMastery.Controllers
                 }
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ViewBag.Message = "Error saving user.";
                 // throw;
