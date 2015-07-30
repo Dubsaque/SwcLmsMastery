@@ -18,6 +18,7 @@ namespace SwcLmsMastery.Controllers
         private SWC_LMSEntities db = new SWC_LMSEntities();
 
         // GET: Courses
+        [Authorize(Roles = "Administrator, Teacher")]
         public async Task<ActionResult> Index()
         {
             var courses = db.Courses.Include(c => c.Subject).Include(c => c.LmsUser);
@@ -25,6 +26,7 @@ namespace SwcLmsMastery.Controllers
         }
 
         // GET: Courses/Details/5
+        [Authorize(Roles = "Administrator, Teacher")]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -60,7 +62,7 @@ namespace SwcLmsMastery.Controllers
             {
                 db.Courses.Add(course);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Dashboard", "Home");
             }
 
             ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectName", course.SubjectId);
@@ -131,7 +133,7 @@ namespace SwcLmsMastery.Controllers
             Course course = await db.Courses.FindAsync(id);
             db.Courses.Remove(course);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Dashboard", "Home");
         }
 
         protected override void Dispose(bool disposing)

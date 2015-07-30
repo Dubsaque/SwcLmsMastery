@@ -16,6 +16,7 @@ namespace SwcLmsMastery.Controllers
         private SWC_LMSEntities db = new SWC_LMSEntities();
 
         // GET: Rosters
+        [Authorize(Roles = "Administrator, Teacher")]
         public async Task<ActionResult> Index()
         {
             var rosters = db.Rosters.Include(r => r.Course).Include(r => r.LmsUser);
@@ -23,6 +24,7 @@ namespace SwcLmsMastery.Controllers
         }
 
         // GET: Rosters/Details/5
+        [Authorize(Roles = "Administrator, Teacher")]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -38,10 +40,11 @@ namespace SwcLmsMastery.Controllers
         }
 
         // GET: Rosters/Create
-        public ActionResult Create()
+        [Authorize(Roles = "Administrator, Teacher")]
+        public ActionResult Create(int id)
         {
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName");
-            ViewBag.UserId = new SelectList(db.LmsUsers, "UserId", "Id");
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", id);
+            ViewBag.UserId = new SelectList(db.LmsUsers, "UserId", "Id", "FirstName");
             return View();
         }
 
@@ -50,13 +53,14 @@ namespace SwcLmsMastery.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Teacher")]
         public async Task<ActionResult> Create([Bind(Include = "RosterId,CourseId,UserId,CurrentGrade,IsDeleted")] Roster roster)
         {
             if (ModelState.IsValid)
             {
                 db.Rosters.Add(roster);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Dashboard", "Home");
             }
 
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", roster.CourseId);
@@ -65,6 +69,7 @@ namespace SwcLmsMastery.Controllers
         }
 
         // GET: Rosters/Edit/5
+        [Authorize(Roles = "Administrator, Teacher")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,13 +91,14 @@ namespace SwcLmsMastery.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Teacher")]
         public async Task<ActionResult> Edit([Bind(Include = "RosterId,CourseId,UserId,CurrentGrade,IsDeleted")] Roster roster)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(roster).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Dashboard", "Home");
             }
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", roster.CourseId);
             ViewBag.UserId = new SelectList(db.LmsUsers, "UserId", "Id", roster.UserId);
@@ -100,6 +106,7 @@ namespace SwcLmsMastery.Controllers
         }
 
         // GET: Rosters/Delete/5
+        [Authorize(Roles = "Administrator, Teacher")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -117,6 +124,7 @@ namespace SwcLmsMastery.Controllers
         // POST: Rosters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Teacher")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Roster roster = await db.Rosters.FindAsync(id);

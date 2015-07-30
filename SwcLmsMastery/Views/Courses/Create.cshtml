@@ -88,8 +88,8 @@
                         <div class="form-group">
                             @Html.Label("Description")
                             <br/>
-                            @Html.TextAreaFor(model => model.CourseDescription, new { htmlAttributes = new { style = "height: 200px; width: 350px;", @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.CourseDescription, "", new { @class = "text-danger" })
+                            @Html.TextAreaFor(model => model.CourseDescription, new { style = "height: 200px; width: 350px;", @class = "form-control" })
+  @Html.ValidationMessageFor(model => model.CourseDescription, "", new { @class = "text-danger" })
 
                         </div>
 
@@ -102,11 +102,8 @@
 
         <hr/>
         <div class="form-group">
-            <a href="@Url.Action("Dashboard", "Home")">
-
-            <input type="cancel" value="Cancel" class="btn btn-default"/>
-                </a>
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <a href="@Url.Action("Dashboard", "Home")"><input type="cancel" value="Cancel" class="btn btn-default"/></a>
+            <input type="submit" value="Create" class="btn btn-primary" />
 
 </div>
 

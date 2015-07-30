@@ -10,7 +10,7 @@
 
         <div class="container table-bordered" style="border-color: black; border-style: solid; border-radius: 5px;">
             <br/>
-            <table width="100%">
+            <table width="100%" class="table-striped">
                 <thead>
                     <tr>
                         <td>
@@ -43,8 +43,9 @@
 </div></tr>
                 </thead>
                 <tbody>
-                    
-                <tr style="height: 10px;"><td colspan="2"></td></tr>
+                    <tr style="height: 10px;"><td colspan="2"></td></tr>
+
+                <tr style="height: 10px;"><td colspan="2" style="background-color: black;">&nbsp;<span style="color: white; font-weight: bolder; font-style: oblique;">Active Courses</span></td></tr>
                 <tr>
                     <td style="background-color: black;">&nbsp;<span style="color: white;">Course Name:</span></td>
                     <td style="background-color: black; text-align: right">&nbsp;<span style="color: white;">Number of Students</span>&nbsp;</td>
@@ -52,19 +53,36 @@
                 @{
                     using (var classesList = new SWC_LMSEntities())
                     {
-                        foreach (var i in classesList.Courses)
+                        foreach (var i in classesList.Courses.Where(x => x.IsArchived == false))
                         {
                             <tr>
                                 <td>&nbsp;@Html.ActionLink(@i.CourseName, "Edit", "Courses", new { id = i.CourseId }, null)</td>
                                 <td style="text-align: right">@i.Rosters.Count</td>
-
                             </tr>
-
                         }
                     }
 
                 }
+                    <tr style="height: 10px;"><td colspan="2"></td></tr>
 
+                    <tr style="height: 10px;"><td colspan="2" style="background-color: black;">&nbsp;<span style="color: white; font-weight: bolder; font-style: oblique;">Archived Courses</span></td></tr>
+                <tr>
+                    <td style="background-color: black;">&nbsp;<span style="color: white;">Course Name:</span></td>
+                    <td style="background-color: black; text-align: right">&nbsp;<span style="color: white;">Number of Students</span>&nbsp;</td>
+                </tr>
+                    @{
+                        using (var classesList = new SWC_LMSEntities())
+                        {
+                            foreach (var i in classesList.Courses.Where(x => x.IsArchived == true))
+                            {
+                                <tr>
+                                    <td>&nbsp;@Html.ActionLink(@i.CourseName, "Edit", "Courses", new { id = i.CourseId }, null)</td>
+                                    <td style="text-align: right">@i.Rosters.Count</td>
+                                </tr>
+                            }
+                        }
+
+                    }
                 </tbody>
             </table>
             <br/>

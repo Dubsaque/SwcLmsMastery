@@ -9,7 +9,12 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jqueryui")
 }
-<h2>Course: @Model.CourseName</h2>
+<Br/>
+
+    <h2>Course Info: @Model.CourseName</h2>
+
+    <p>@Html.ActionLink("Add User To Roster", "Create", new { controller = "Rosters", id = Model.CourseId }) || @Html.ActionLink("Add Assignment", "Create", new { controller = "Assignments", id = Model.CourseId})</p>
+
 <script>
     $(function () {
         $("#datepicker").datepicker();
@@ -113,19 +118,61 @@
     <div class="table-bordered col-md-5" style="border-radius: 5px; border-color: black; border-width: 2px; margin-left: 10px">
         <br/>
         <h4>Analytics</h4>
-        <hr/>
-       
-        Total Students: @{
-            using (var context = new SWC_LMSEntities())
+
+        <span style="font-weight: bold;">Number of students: </span> @{
+                                                                         using (var context = new SWC_LMSEntities())
+                                                                         {
+                                                                             var student = context.Rosters.Where(x => x.CourseId == Model.CourseId);
+                                                                             @student.Count()
+                                                                         }
+                                                                     }
+        <br/><hr/>
+
+        <span style="font-weight: bold;">By Grade: </span><ul>
+    @{
+        using (var context = new SWC_LMSEntities())
+        {
+            foreach (var grade in context.Rosters.Where(x => x.CourseId == Model.CourseId).OrderBy(x => x.CurrentGrade))
             {
-                foreach (var student in context.Rosters.Where(x => x.CourseId == Model.CourseId))
+                if (grade.CurrentGrade == null)
                 {
-                    @student.LmsUser.FirstName @student.LmsUser.LastName
+
                 }
+                else
+                {
+                    <li>@grade.CurrentGrade</li>
+                }
+
+
+
             }
         }
-        <Br/>
-        By Grade:
+    }
+</ul>
+        <br/>
+        <hr/>
     </div>
+    <div class="col-md-5" style="margin-left: 10px">&nbsp;</div>
 
-</div>
+        <div class="table-bordered col-md-5" style="border-radius: 5px; border-color: black; border-width: 2px; margin-left: 10px">
+
+            <h4>Assignments:</h4>
+                
+            @{
+                using (var context = new SWC_LMSEntities())
+                {
+                    foreach (var ass in context.Assignments.Where(x => x.CourseId == Model.CourseId))
+                    {
+                        <span style="font-weight: bold;">Assignment: </span>   @ass.AssignmentName
+                        <br />
+                        <span style="font-weight: bold;">Description: </span>   @ass.AssignmentDescription
+                        <br />
+                        <span style="font-weight: bold;">Due: </span>    @ass.DueDate
+                        <Br/>
+                        <hr/>
+                    }
+                }
+            }
+        </div>
+
+    </div>

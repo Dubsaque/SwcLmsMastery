@@ -91,6 +91,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', end
                     else if (User.IsInRole("Teacher"))
                     {
                         <ul class="nav navbar-nav">
+                            <li><a href="#"><span class="glyphicon glyphicon-apple" style="font-family: helvetica, arial; color: orangered;">Welcome, Teacher</span></a></li>
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
                             <li>@Html.ActionLink("Account", "Index", "Manage")</li>
@@ -119,17 +120,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', end
                     else if (User.IsInRole("Student"))
                     {
                         <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li><a href="#"><span class="glyphicon glyphicon-apple" style="font-family: helvetica, arial; color: yellow;">Student</span></a></li>
+
                             <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
                             <li>@Html.ActionLink("Account", "Index", "Manage")</li>
-                            <li><a href="#"><span class="glyphicon glyphicon-apple" style="font-family: helvetica, arial; color: yellow;">Student</span></a></li>
-                        </ul>
+                               </ul>
                         @Html.Partial("_LoginPartial")
                     }
                     else if (User.IsInRole("Parent"))
                     {
                         <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li><a href="#"><span class="glyphicon glyphicon-piggy-bank" style="font-family: helvetica, arial; color: yellowgreen;">Parent</span></a></li>
+
                             <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
                             <li>@Html.ActionLink("Account", "Index", "Manage")</li>
                             <li><a href="#"><span class="glyphicon glyphicon-piggy-bank" style="font-family: helvetica, arial; color: yellowgreen;">Parent</span></a></li>
@@ -138,6 +140,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363535', end
                     }
                     else
                     {
+                        <li><a href="#"><span class="blink" style="font-family: helvetica, arial; color: yellowgreen;">Awaiting Authorization</span></a></li>
 
                             @Html.ActionLink("Software Craftsmanship Guild LMS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
